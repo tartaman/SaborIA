@@ -76,4 +76,10 @@ INSERT INTO medida(nombre, simbolo, estado) VALUES("Gramo", "g", TRUE),
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Arroz", 1, True), ("Huevo", 7, True), ("Pollo", 1, True), ("Aceite", 3, True), ("Carne", 1, True), ("Sal", 1, True), ("Aceite", 3, True), ("Tomate", 7, True),
 ("Cebolla", 7, True), ("Cilantro", 1, True), ("Limon", 7, True), ("Naranja agria", 7, True);
 
-SELECT ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Zanahoria", 7, True), ("Elote", 7, True), ("Dientes de ajo", 7, True), ("Aguacate", 7, True), ("Agua", 3, True),
+("Chile habanero", 7, True), ("Chile Morron", 7, True), ("Harina", 1, True), ("Lechuga", 7, True), ("Chayote", 7, True), ("Mayonesa", 3, True),
+("Guisantes", 1, True), ("Limon", 7, True), ("Atún", 7, True), ("Jamón", 1, True), ("Levadura", 1, True);
+
+UPDATE ingrediente SET id_medida = 1 WHERE Id_ingrediente = 26;
+
+SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
