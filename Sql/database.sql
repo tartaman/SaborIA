@@ -65,4 +65,15 @@ CREATE TABLE inventario(
     CONSTRAINT FK_usuario_ingrediente FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario)
 );
 
+INSERT INTO medida(nombre, simbolo, estado) VALUES("Gramo", "g", TRUE),
+("Kilogramo", "Kg", TRUE),
+("Mililitro", "ml", TRUE),
+("Litro", "L", TRUE),
+("Taza", "Tza", TRUE),
+("Onza", "oz", TRUE),
+("Piezas", "Pz", TRUE);
 
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Arroz", 1, True), ("Huevo", 7, True), ("Pollo", 1, True), ("Aceite", 3, True), ("Carne", 1, True), ("Sal", 1, True), ("Aceite", 3, True), ("Tomate", 7, True),
+("Cebolla", 7, True), ("Cilantro", 1, True), ("Limon", 7, True), ("Naranja agria", 7, True);
+
+SELECT ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
