@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS Saboria;
 Create DATABASE Saboria;
 USE Saboria;
 

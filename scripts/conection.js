@@ -1,13 +1,13 @@
 let mysql = require("mysql")
 
-let conetion = mysql.createConnection({
+const conection = mysql.createConnection({
     host: "localhost",
     database: "saboria",
     user:"root",
     password:""
 })
 
-conetion.connect(function(err) {
+conection.connect(function(err) {
     if (err) {
         throw err;
     } else {
@@ -15,5 +15,5 @@ conetion.connect(function(err) {
     }
 
 })
-
-conetion.end()
+module.exports = conection
+conection.end()
