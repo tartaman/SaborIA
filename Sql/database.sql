@@ -86,6 +86,10 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Zanahoria", 7, True),
 ("Chile habanero", 7, True), ("Chile Morron", 7, True), ("Harina", 1, True), ("Lechuga", 7, True), ("Chayote", 7, True), ("Mayonesa", 3, True),
 ("Guisantes", 1, True), ("Atún", 1, True), ("Jamón", 1, True), ("Levadura", 1, True);
 
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Chile guajillo", 7, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Epazote", 7, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Tortilla", 7, True), ("Totopos", 7,TRUE);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Crema ácida",3, True), ("Queso fresco",1, True);
 
 SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
 
@@ -102,6 +106,15 @@ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dific
 \nCocina hasta que los huevos estén cocidos pero aún ligeramente húmedos. Los huevos seguirán cocinándose un poco después de sacarlos del fuego.
 \nSirve los huevos revueltos calientes, directamente de la sartén a los platos.", 1, TRUE);
 
-INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES()
+INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 1, 2), (6, 1, 1.5), (7, 1, 0.3), (4, 1, 15);
 
-select pasos from receta;
+
+INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Chilaquiles rojos", 1, 40, "", 4, "Hierve los tomates ya pelados en agua durante 3 minutos. \nAñade los chiles guajillo limpios y sin semilla y déjalos hervir por 2 minutos más. \nRetira del fuego los ingredientes y déjalos reposar hasta que se enfríen.
+\nLicúa los jitomates y los chiles con el agua donde hirvieron, junto con los ajos y 1/4 de cebolla hasta obtener una salsa tersa.
+\nCuélala y resérvela. Pon sobre el fuego una cacerola con 15 ml de aceite; cuando esté caliente, añade la salsa, las ramas de epazote y la sal.
+\nDistribuye en platos los totopos y báñalos con la salsa caliente.
+\n Agrégales crema, queso y cebolla.", 1, TRUE);
+
+INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(8, 2, 3), (28, 2, 6), (15, 2, 2), (9, 2, 0.75),
+(4, 2, 165), (29, 2, 2), (6, 2, 5), (31, 2, 80), (32,2, 200), (33,2, 250);
