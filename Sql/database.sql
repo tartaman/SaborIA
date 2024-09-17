@@ -95,7 +95,8 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Frijol refrito", 1, 
 ("Media crema", 3, True);
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Carne de res molida", 1, True), ("Pimentón", 7, True), ("Paprika", 1, True), ("Pasta de tomate", 3, True),
 ("Azúcar", 1, True);
-
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Pechuga de pollo", 1, True), ("Repollo", 1, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Calabaza", 1, True), ("Calabacita", 1, True);
 
 SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
 
@@ -151,7 +152,7 @@ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dific
  (39, 4, 150), (38, 4, 20), (30, 4, 4), (6, 4, 2), (7, 4, 1), (10, 4, 2);
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Enfrijoladas de polo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
+("Enfrijoladas de pollo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
  Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
  Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
  Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
@@ -179,3 +180,13 @@ Calienta un sartén con aceite.\nVamos a sofreír el ajo, cuando esté transpare
 
  INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(40, 5, 500), (9, 5, 1), (41, 5, 1), (8, 5, 1), (6, 5, 15), (43, 5,45),
  (4, 5, 30), (20, 5, 250), (17, 5, 480), (44, 5, 40);
+ 
+ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Caldo de pollo con verduras", 1, 30, "", 2, "Cocina el pollo con la cebolla, agua y sal. Lleva a ebullición, baja el fuego, tapa la olla y cocina 20 minutos. Retira la espuma que se va formando.
+\nPela la zanahoria. Corta la zanahoria, chayote y calabacita en cubos del mismo tamaño. Mientras más grandes los dejes más tiempo tardaran en estar listos, yo los corto en cubos medianos.
+\nAgrega la zanahoria, chayote, cilantro y cocina 15 minutos con la tapa puesta y a fuego bajo. Si usas repollo agrega desde ahorita.
+\nAgrega la calabacita y cocina 5 minutos más o hasta que todas las verduras estén cocidas. Recuerda cortarlas de un tamaño parecido para que estén listas al mismo tiempo y no cortarlas tan grandes o tomarán más tiempo en estar listas.
+\nSazona al gusto con sal y retira el pollo y cebolla de la olla. Deshebra o desmecha, tira el hueso y regresa el pollo a la olla. Mezcla bien y cocina si lo prefieres unos minutos más. Rectifica el sazón antes de servir y de ser necesario agrega más sal.
+\nSirve caliente y acompaña con tortillas, arroz blanco o rojo (opcional) y jugo de limón.", 1, TRUE);
+ 
+  INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(45, 6, 300), (17, 6, 2000), (13, 6, 2), (22, 6, 1), (48, 6, 2), (10, 6, 10), (9, 6, 0.25), (46, 6, 500), (6, 6, 5);
