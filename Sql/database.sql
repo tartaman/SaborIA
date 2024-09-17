@@ -90,6 +90,12 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Chile guajillo", 7, 
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Epazote", 7, True);
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Tortilla", 7, True), ("Totopos", 7,TRUE);
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Crema ácida",3, True), ("Queso fresco",1, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Queso oaxaca", 1, True), ("Aceite de Oliva", 3, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Frijol refrito", 1, True), ("Chile morita", 7, True), ("Queso cotija", 1, True),
+("Media crema", 3, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Carne de res molida", 1, True), ("Pimentón", 7, True), ("Paprika", 1, True), ("Pasta de tomate", 3, True),
+("Azúcar", 1, True);
+
 
 SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
 
@@ -110,11 +116,66 @@ INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 1,
 
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Chilaquiles rojos", 1, 40, "", 4, "Hierve los tomates ya pelados en agua durante 3 minutos. \nAñade los chiles guajillo limpios y sin semilla y déjalos hervir por 2 minutos más. \nRetira del fuego los ingredientes y déjalos reposar hasta que se enfríen.
+("Chilaquiles rojos", 1, 40, "", 2, "Hierve los tomates ya pelados en agua durante 3 minutos. \nAñade los chiles guajillo limpios y sin semilla y déjalos hervir por 2 minutos más. \nRetira del fuego los ingredientes y déjalos reposar hasta que se enfríen.
 \nLicúa los jitomates y los chiles con el agua donde hirvieron, junto con los ajos y 1/4 de cebolla hasta obtener una salsa tersa.
 \nCuélala y resérvela. Pon sobre el fuego una cacerola con 15 ml de aceite; cuando esté caliente, añade la salsa, las ramas de epazote y la sal.
 \nDistribuye en platos los totopos y báñalos con la salsa caliente.
-\n Agrégales crema, queso y cebolla.", 1, TRUE);
+\n Agrégales crema, queso y cebolla.", 4, TRUE);
 
 INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(8, 2, 3), (28, 2, 6), (15, 2, 2), (9, 2, 0.75),
 (4, 2, 165), (29, 2, 2), (6, 2, 5), (31, 2, 80), (32,2, 200), (33,2, 250);
+
+INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Omelette de jamón y queso", 1, 15, "", 2, "A la hora de preparar tu tortilla francesa u omelette con jamón y queso, lo primero que 
+deberás hacer será cascar y batir los huevos en un cuenco o plato hondo. Agregar la sal durante este proceso, puede ser al gusto. 
+Cabe destacar que hay quienes le agregan un poco de leche (dos cucharadas) para conseguir un omelet más esponjoso.
+\nA continuación, deberás cortar el jamón en pequeñas tiras o trozos que deberás incorporar al cuenco con los huevos batidos. 
+En el caso del queso, rayarlo o trozearlo y agregarlo también a la mezcla.
+\n Con la ayuda de un tenedor, remueve bien la mezcla para que el jamón y el queso queden bien integrados en el huevo y 
+mientras pon al fuego una sartén antiadherente con un poco de aceite de oliva. Será fundamental que la sartén no se pegue para
+no destrozar la tortilla francesa mientras la preparas.
+\nUna vez que la sartén con aceite esté bien caliente, deberás verter la mezcla de tu omelette de jamón y queso y menéala un poco con una cuchara de madera -nunca con utensilios metálicos para evitar rayar la sartén- para que el huevo cuaje.
+\nUna vez que veamos que empieza a cocinarse por una cara, tendremos que dar la vuelta a la tortilla francesa de jamón y queso para que
+quede dorada por ambos lados. Asimismo, puedes optar entre doblar tu omelette por la mitad, en tres partes o mantener la forma redondeada 
+de la sartén.", 1, TRUE);
+
+INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 3, 2), (6, 3, 1.5), (26, 3, 50), (4, 3, 15); 
+
+INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Enfrijoladas de polo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
+ Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
+ Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
+ Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
+ 
+ INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(3, 4, 300), (36, 4, 240), (15, 4, 2), (9, 4, 0.25), (37, 4, 3),
+ (39, 4, 150), (38, 4, 20), (30, 4, 4), (6, 4, 2), (7, 4, 1), (10, 4, 2);
+
+INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Enfrijoladas de polo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
+ Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
+ Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
+ Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
+ 
+ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Empanadas de carne", 1, 80, "", 3, "Vamos a iniciar nuestra receta cortando la cebolla, el pimentón, el tomate y el ajo en cuadritos.\n
+Calienta un sartén con aceite.\nVamos a sofreír el ajo, cuando esté transparente le añadiremos la cebolla y mezclamos. Luego le agregaremos el pimentón y el tomate, removemos muy bien.
+\nPosteriormente, le agregarás la carne y vas a mezclar muy bien hasta que se integre con las verduras. La tapamos y dejaremos cocinar por 7 minutos a fuego lento.
+\nPasado ese tiempo, nuestra carne debió producir un poco de líquido por el vapor. En ese momento, le añadirás la sal y pimienta al gusto. Luego la pasta de tomate y la paprika. Mezcla muy bien hasta integrar todo.
+\nTapa nuevamente y deja cocinar por 8 minutos más. Destapa la carne y deja que se reduzca todo el líquido. Debe quedar seca pero con un poco de jugo. Deja enfriar, ya que debe estar a temperatura ambiente para hacer las empanadas.
+\nEn un bol, añadiremos el agua junto a la sal y el azúcar, Con una cuchara mezcla muy bien hasta disolver completamente.
+\nAgrega una cucharada de aceite al agua.\nAñade progresivamente la harina de maíz precocida y vas a ir mezclando con una paleta hasta que obtengas una masa homogénea.
+\nCuando esté densa, usa tus manos para terminar de amasar muy bien hasta que la masa esté súper suave y blanda.
+\nSi ves que necesitas más agua o harina, puedes añadirle más a tu consideración.
+\nToma una bolsa de plástico que sea dura, y la vas a cortar con una tijera hasta darle forma de rectángulo o cuadrado.
+\nVas a tomar un bol, le vas a añadir agua con un poco de aceite, el cual será como tu engrasante para untarle a la bolsa de plástico y la empanada se pueda despegar fácilmente.
+\nVas a tomar el harina y harás bolitas medianas y del mismo tamaño.
+\nCalienta una sartén con aceite.
+\nEngrasa la bolsa de plástico con el agua junto al aceite. Colocaremos una bola en el medio de la bolsa y con las yemas de los dedos, la vamos a aplastar. Debes formar una rueda o círculo plano con tu masa.
+\nAñadirás en el centro el relleno. Un poco de carne molida
+\nDespués de colocar el relleno vas a doblar la masa por la mitad para formar una media luna. Luego corta los bordes de masa con una taza redonda de plástico o una tapa honda. Solo debes presionar y listo. Quitas los excesos de masa.
+\nVas a repetir este proceso hasta que salgan todas tus empanadas.
+\nLas freirás en abundante aceite por cada lado hasta que estén súper doraditas.
+\nColocas las empanadas en papel absorbente para quitarle el exceso de aceite y estén más ligeras.", 1, TRUE);
+
+ INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(40, 5, 500), (9, 5, 1), (41, 5, 1), (8, 5, 1), (6, 5, 15), (43, 5,45),
+ (4, 5, 30), (20, 5, 250), (17, 5, 480), (44, 5, 40);
