@@ -1,4 +1,4 @@
-DROP DATABASE if EXISTS Saboria;
+DROP DATABASE IF EXISTS Saboria;
 Create DATABASE Saboria;
 USE Saboria;
 
