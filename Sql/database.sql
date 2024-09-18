@@ -97,6 +97,9 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Carne de res molida"
 ("Azúcar", 1, True);
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Pechuga de pollo", 1, True), ("Repollo", 1, True);
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Calabaza", 1, True), ("Calabacita", 1, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Paquetes de pasta spagetti", 7, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Barra de mantequilla", 7, True);
+INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Queso manchego", 1, True);
 
 SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
 
@@ -187,6 +190,14 @@ Calienta un sartén con aceite.\nVamos a sofreír el ajo, cuando esté transpare
 \nAgrega la zanahoria, chayote, cilantro y cocina 15 minutos con la tapa puesta y a fuego bajo. Si usas repollo agrega desde ahorita.
 \nAgrega la calabacita y cocina 5 minutos más o hasta que todas las verduras estén cocidas. Recuerda cortarlas de un tamaño parecido para que estén listas al mismo tiempo y no cortarlas tan grandes o tomarán más tiempo en estar listas.
 \nSazona al gusto con sal y retira el pollo y cebolla de la olla. Deshebra o desmecha, tira el hueso y regresa el pollo a la olla. Mezcla bien y cocina si lo prefieres unos minutos más. Rectifica el sazón antes de servir y de ser necesario agrega más sal.
-\nSirve caliente y acompaña con tortillas, arroz blanco o rojo (opcional) y jugo de limón.", 1, TRUE);
+\nSirve caliente y acompaña con tortillas, arroz blanco o rojo (opcional) y jugo de limón.", 4, TRUE);
  
   INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(45, 6, 300), (17, 6, 2000), (13, 6, 2), (22, 6, 1), (48, 6, 2), (10, 6, 10), (9, 6, 0.25), (46, 6, 500), (6, 6, 5);
+  
+INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
+("Spaghetti Rojo", 1, 15, "", 2, "Calentar agua en una olla, cuando el agua ya está sacando burbujas, romper los dos paquetes de spaghettis por la mitad y poner en la olla con el agua
+\nCuando los spaghettis están listos, quitar el agua con el que se cocieron
+\nEn una olla aparte, derretir la mantequilla con el puré de tomate y la media crema, mezclar hasta que está bien caliente
+\nAgregar la mezcla anterior a los spaghettis secos, mezclar a fuego lento hasta integrar todo y ¡listo!", 6, TRUE);
+
+INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(50, 7, 21), (39, 7, 250), (43, 7, 1000), (51, 7, 50);
