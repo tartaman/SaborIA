@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    
+    <form action="" id="dificultadForm" method="post">
+        <label for="Nombre">Nombre de la receta:</label> <br>
+        <input type="text" name="Nombre" id="nombre"><br>
+        <label for="Tiempo">Tiempo Preparacion:</label> <br>
+        <input type="text" name="Tiempo" id="tiempo"><br>
+        <label for="dificultad">Dificultad</label><br>
+        <select id="dificultades" name="dificultad">
+        
+        </select><br>
+        <label for="pasos">Pasos:</label>
+        <input type="text" name="pasos" id="pasos"><br>
+        <label for="porciones">Porciones:</label> <br>
+        <input type="number" min="1" max="20" name="porciones" id="porciones"> <br>
+        <button type="submit">ya</button>
+    </form>
 </body>
+<script src="scripts/addoptions.js"></script>
+<script src="scripts/enviarReceta.js"></script>
 </html>

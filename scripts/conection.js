@@ -13,7 +13,6 @@ conection.connect(function(err) {
     } else {
         console.log("Conection succesful")
     }
-
 })
 module.exports = conection
 conection.end()
