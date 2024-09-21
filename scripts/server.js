@@ -26,21 +26,20 @@ app.get("/dificultades", (req, res) => {
   });
 });
 
-// app.post("/agregar-receta", (req, res) => {
-//   const { nombre } = req.body; // Obtenemos los datos enviados desde el frontend
+app.post("/agregar-receta", (req, res) => {
+  const { nombre, tiempo, dificultad, pasos, porciones  } = req.body; // Obtenemos los datos enviados desde el frontend
+  if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
+    return res.status(400).json({ message: "El nombre es obligatorio" });
+  }
 
-//   if (!nombre) {
-//     return res.status(400).json({ message: "El nombre es obligatorio" });
-//   }
-
-//   const query = "INSERT INTO receta (nombre) VALUES (?)";
-//   connection.query(query, [nombre], (err, result) => {
-//     if (err) {
-//       return res.status(500).json({ message: "Error al agregar la dificultad" });
-//     }
-//     res.status(201).json({ message: "Dificultad agregada correctamente", id: result.insertId });
-//   });
-// });
+  const query = "INSERT INTO receta(titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie, estado) VALUES (?,?,?,?,?,?,?,?,?)";
+  connection.query(query, [nombre,1,tiempo,null,dificultad,pasos,porciones,1,1], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Error al agregar la receta" });
+    }
+    res.status(201).json({ message: "receta agregada correctamente", id: result.insertId });
+  });
+});
 
 // Iniciar el servidor
 app.listen(3000, '0.0.0.0',() => {

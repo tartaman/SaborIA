@@ -13,7 +13,7 @@ document.querySelector('#dificultadForm').addEventListener('submit', function(ev
     console.log(formData)
 
     // Hacemos una solicitud POST con fetch al backend
-    fetch("http://82.197.82.74:3000/agregar-receta", {
+    fetch("https://saboria.onrender.com/agregar-receta", {
         method: "POST",
         headers: {
             "Content-Type": "application/json" // Indicamos que estamos enviando JSON
