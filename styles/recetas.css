@@ -1,0 +1,20 @@
+:root {
+    --background-color: #A7CCA8;
+    --kinda-white: #FFFCEF;
+    --text-color: #00695C;
+    --kinda-black:#1c1c1c;
+}
+.main-container {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    height: 50vh;
+}
+.add-image-container {
+    width: 50%;
+}
+.add-image-div {
+    width: 100%;
+    height: 75%;
+
+}

@@ -12,8 +12,7 @@ const connection = mysql.createConnection({
   host: "82.197.82.74",
   database: "u507122559_saboria",
   user: "u507122559_usersaboria",
-  password: process.env.PASSWORD}
-  
+  password: process.env.PASSWORD
 });
 
 app.get("/dificultades", (req, res) => {
@@ -45,3 +44,8 @@ app.post("/agregar-receta", (req, res) => {
 app.listen(3000, '0.0.0.0',() => {
   console.log("Servidor corriendo en el puerto 3000");
 });
+
+//no me maten basicamente querys cada 5 segundos para que el servidor no me saque
+setInterval(() => {
+  connection.query('SELECT 1');
+}, 5000); 
