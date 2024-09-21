@@ -1,9 +1,12 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
-
+const corsOptions = {
+  origin: '*',  // O permite solicitudes desde una URL específica si es necesario
+  optionsSuccessStatus: 200
+};
 const app = express();
-app.use(cors()); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
+app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 
 const connection = mysql.createConnection({
   host: "82.197.82.74",
@@ -39,6 +42,6 @@ app.get("/dificultades", (req, res) => {
 // });
 
 // Iniciar el servidor
-app.listen(3000, () => {
+app.listen(3000, '0.0.0.0',() => {
   console.log("Servidor corriendo en el puerto 3000");
 });

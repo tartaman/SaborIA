@@ -1,13 +1,22 @@
-// Realizamos una petición al backend para obtener los datos
-fetch("http://82.197.82.74:3000/dificultades")
-.then(response => response.json())
-.then(data => {
+fetch("https://9461-189-172-151-140.ngrok-free.app/dificultades")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Error al obtener las dificultades");
+    }
+    return response.json(); // Parseamos la respuesta como JSON
+  })
+  .then(data => {
+    console.log("Dificultades obtenidas:", data);
     const combo = document.querySelector("#dificultades");
+    
+    // Rellenar el combo con las dificultades
     data.forEach(dificultad => {
-        const option = document.createElement("option");
-        option.value = dificultad.id_dificultad; // Asigna un valor basado en el id (o cualquier campo relevante)
-        option.textContent = dificultad.nombre; // Muestra el nombre o cualquier campo que quieras
-        combo.appendChild(option);
+      const option = document.createElement("option");
+      option.value = dificultad.id_dificultad; // Asignamos el id como valor
+      option.textContent = dificultad.nombre;  // Asignamos el nombre como texto
+      combo.appendChild(option);
     });
-})
-.catch(error => console.error("Error al obtener las dificultades:", error));
+  })
+  .catch(error => {
+    console.error("Hubo un problema al obtener las dificultades:", error);
+  });
