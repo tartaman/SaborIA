@@ -1,4 +1,4 @@
-fetch("https://9461-189-172-151-140.ngrok-free.app/dificultades")
+fetch("https://saboria.onrender.com/dificultades")
   .then(response => {
     if (!response.ok) {
       throw new Error("Error al obtener las dificultades");

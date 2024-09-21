@@ -12,7 +12,8 @@ const connection = mysql.createConnection({
   host: "82.197.82.74",
   database: "u507122559_saboria",
   user: "u507122559_usersaboria",
-  password: "Shotgun_Kin89$"
+  password: process.env.PASSWORD}
+  
 });
 
 app.get("/dificultades", (req, res) => {
