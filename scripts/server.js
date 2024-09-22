@@ -30,7 +30,7 @@ app.post("/agregar-receta", (req, res) => {
   if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
     return res.status(400).json({ message: "El nombre es obligatorio" });
   }
-
+  console.log(`voy a subir ${nombre, tiempo, dificultad, pasos,porciones}`)
   const query = "INSERT INTO receta(titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie, estado) VALUES (?,?,?,?,?,?,?,?,?)";
   connection.query(query, [nombre,1,tiempo,null,dificultad,pasos,porciones,1,1], (err, result) => {
     if (err) {
