@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
   user: "u507122559_usersaboria",
   password: process.env.PASSWORD
 });
-
+app.use(express.json())
 app.get("/dificultades", (req, res) => {
   connection.query("SELECT id_dificultad, nombre FROM dificultad;", (err, result) => {
     if (err) {
@@ -34,6 +34,7 @@ app.post("/agregar-receta", (req, res) => {
   const query = "INSERT INTO receta(titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie, estado) VALUES (?,?,?,?,?,?,?,?,?)";
   connection.query(query, [nombre,1,tiempo,null,dificultad,pasos,porciones,1,1], (err, result) => {
     if (err) {
+      console.log(err)
       return res.status(500).json({ message: "Error al agregar la receta" });
     }
     res.status(201).json({ message: "receta agregada correctamente", id: result.insertId });
