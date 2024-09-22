@@ -6,7 +6,7 @@ document.querySelector('#dificultadForm').addEventListener('submit', function(ev
     const formData = {
         nombre: document.querySelector('#nombre').value,
         tiempo: document.querySelector('#tiempo').value,
-        difficultad: document.querySelector('#dificultades').value,
+        dificultad: document.querySelector('#dificultades').value,
         pasos: document.querySelector('#pasos').value,
         porciones: document.querySelector('#porciones').value
     };
@@ -22,7 +22,7 @@ document.querySelector('#dificultadForm').addEventListener('submit', function(ev
     })
     .then(response => response.json()) // Procesamos la respuesta como JSON
     .then(data => {
-        console.log("Dificultad agregada con éxito:", data);
+        console.log("receta agregada con éxito:", data);
     })
     .catch(error => console.error("Error al agregar la dificultad:", error));
 });

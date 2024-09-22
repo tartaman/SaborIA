@@ -52,3 +52,11 @@ body {
     text-decoration: none;
     color: var(--text-color);
 }
+
+@media (max-width:800px) {
+    .options ul {
+        justify-content: start;
+        gap: 1rem;
+        list-style-type: disc;
+    }
+}
