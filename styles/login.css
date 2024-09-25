@@ -1,0 +1,43 @@
+:root {
+    --background-color: #A7CCA8;
+    --kinda-white: #FFFCEF;
+    --logo:url('../Images/Logo.png');
+    --text-color: #00695C;
+    --kinda-black:#1c1c1c;
+    --moradito: #C5B3FF;
+}
+* {
+    font-family: "Roboto";
+}
+.main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-container {
+    height: 50%;
+    width: 50%;
+    background-color: var(--kinda-white) ;
+    padding: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+}
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+.form-input {
+    width: 100%;
+    font-size: var(--font-size);
+    padding: 1rem;
+}

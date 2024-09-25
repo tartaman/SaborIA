@@ -15,6 +15,7 @@ const connection = mysql.createConnection({
   password: process.env.PASSWORD
 });
 app.use(express.json())
+//aqui se crean las API basicamente todo lo que tenga get, va a hacer una api de la cual podremos descargar datos
 app.get("/dificultades", (req, res) => {
   connection.query("SELECT id_dificultad, nombre FROM dificultad;", (err, result) => {
     if (err) {
@@ -23,6 +24,41 @@ app.get("/dificultades", (req, res) => {
     res.json(result); // Enviamos los resultados como JSON
     console.log(result)
   });
+});
+
+app.get('/verify-email', (req, res) => {
+  const token = req.query.token; // Obtenemos el token desde la URL
+
+  // Primero buscamos el token en la base de datos
+  connection.query(
+    'SELECT * FROM usuario WHERE token = ?',
+    [token],
+    (error, results) => {
+      if (error) {
+        console.error('Error ejecutando la consulta:', error);
+        res.send('Error en la base de datos');
+        return;
+      }
+
+      if (results.length > 0) {
+        // Usuario encontrado, actualiza el estado de verificación
+        connection.query(
+          'UPDATE users SET isVerified = true WHERE token = ?',
+          [token],
+          (err) => {
+            if (err) {
+              console.error('Error actualizando el usuario:', err);
+              res.send('Error al verificar el correo');
+              return;
+            }
+            res.send('¡Tu correo ha sido verificado exitosamente!');
+          }
+        );
+      } else {
+        res.send('Token no válido o expirado');
+      }
+    }
+  );
 });
 
 app.post("/agregar-receta", (req, res) => {
