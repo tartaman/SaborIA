@@ -10,11 +10,19 @@
 <body>
     <section class="main">
         <div class="form-container">
-            <h1>Login</h1>
-            <form action="nose" class="form">
+            <h1>Sing-up</h1>
+            <form action="nose" class="form" id="singupform">
                 <div class="campo-form">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" placeholder="Nombre" name="Nombre" id="nombre" required>
+                    <label for="Apellido_pat">Apellido paterno:</label>
+                    <input type="text" name="Apellido_pat" id="apellidopat" placeholder="Apellido paterno" required>
+                    <label for="Apellido_mat">Apellido materno</label>
+                    <input type="text" name="Apellido_mat" id="apellidomat" placeholder="Apellido Materno" required>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" name="email" id="email" placeholder="ejemplo@correo.com">
                     <label for="usuario">
-                        Usuario:
+                        Nombre de Usuario:
                     </label>
                     <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-input">
                 </div>
@@ -24,12 +32,10 @@
                     </label>
                     <input type="text" name="contrasena" id="contrasena" placeholder="Contraseña" class="form-input">
                 </div>
-                <div>
-                    <h5>¿No tienes cuenta? <a href="sing-up.html">Registrate</a></h5>
-                </div>
-                <button type="submit">Log-in</button>
+                <button type="submit">sing-in</button>
             </form>
         </div>
     </section>
 </body>
+<script src="scripts/registrarUsuario.js"></script>
 </html>

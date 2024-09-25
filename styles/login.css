@@ -16,7 +16,7 @@
     align-items: center;
 }
 .form-container {
-    height: 50%;
+    height: fit-content;
     width: 50%;
     background-color: var(--kinda-white) ;
     padding: 2rem;
@@ -29,7 +29,6 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 10vh;
 }
 .campo-form {
     display: flex;
@@ -39,5 +38,5 @@
 .form-input {
     width: 100%;
     font-size: var(--font-size);
-    padding: 1rem;
+    margin-bottom: 1rem ;
 }

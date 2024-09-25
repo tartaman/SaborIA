@@ -1,6 +1,10 @@
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const express = require("express");
+const nodemailer = require('nodemailer');
 const mysql = require("mysql");
 const cors = require("cors");
+const saltRounds = 10 //a más, mas tarda
 const corsOptions = {
   origin: '*',  // O permite solicitudes desde una URL específica si es necesario
   optionsSuccessStatus: 200
@@ -77,6 +81,32 @@ app.post("/agregar-receta", (req, res) => {
   });
 });
 
+app.post("/addEmail", (req,res) => {
+  const {nombre, apat, amat,correo,username,pass} = req.body
+  if (!nombre || !apat || !correo || !username || !pass) 
+    return res.status(400).json({message: "Campo o Campos obligatorios no llenados"});
+  console.log(`voy a subir ${nombre, apat, amat, correo, username,pass}`)
+  const token = crypto.randomBytes(32).toString('hex');
+
+  // Hasheamos la contraseña
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    if (err) throw err;
+
+    bcrypt.hash(password, salt, (err, hash) => {
+      if (err) throw err;
+      
+      const query = "INSERT INTO u507122559_saboria.usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token) VALUES(?, ?, ?, ?, ?, ?, ?);"
+      connection.query(query, [nombre, apat,amat, correo,hash,0,token], (err,result) => {
+        if (err) {
+          console.log(err)
+          return res.status(500).json({message:"Error al registrar usuario"});
+        }
+        res.status(201).json({message: "Registrado correctamente", id: result.insertId});
+      
+      })
+    }
+  )});
+});
 // Iniciar el servidor
 app.listen(3000, '0.0.0.0',() => {
   console.log("Servidor corriendo en el puerto 3000");

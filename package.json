@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.21.0",
     "mysql": "^2.18.1",
     "ngrok": "^5.0.0-beta.2",
