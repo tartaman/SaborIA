@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 const mysql = require("mysql");
 const cors = require("cors");
 const saltRounds = 10 //a más, mas tarda
-const correoSaboria = 'servicios@saboria.me'
+const correoSaboria = 'appsaboria@gmail.com'
 const contraSaboria = 'Bullet_Kin89$'
 const transporter = nodemailer.createTransport({
-  service: 'Outlook', 
+  service: 'gmail', 
   auth: {
     user: `${correoSaboria}`, // Tu email de Hostinger con Outlook
     pass: `${contraSaboria}`, // Tu contraseña
