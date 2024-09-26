@@ -5,6 +5,16 @@ const nodemailer = require('nodemailer');
 const mysql = require("mysql");
 const cors = require("cors");
 const saltRounds = 10 //a más, mas tarda
+const correoSaboria = 'servicios@saboria.me'
+const contraSaboria = 'Bullet_Kin89$'
+const transporter = nodemailer.createTransport({
+  service: 'Outlook', 
+  auth: {
+    user: `${correoSaboria}`, // Tu email de Hostinger con Outlook
+    pass: `${contraSaboria}`, // Tu contraseña
+  },
+});
+
 const corsOptions = {
   origin: '*',  // O permite solicitudes desde una URL específica si es necesario
   optionsSuccessStatus: 200
@@ -32,7 +42,6 @@ app.get("/dificultades", (req, res) => {
 
 app.get('/verify-email', (req, res) => {
   const token = req.query.token; // Obtenemos el token desde la URL
-
   // Primero buscamos el token en la base de datos
   connection.query(
     'SELECT * FROM usuario WHERE token = ?',
@@ -104,6 +113,19 @@ app.post("/addEmail", (req,res) => {
         res.status(201).json({message: "Registrado correctamente", id: result.insertId});
       
       })
+      const mailOptions = {
+        from: `${correoSaboria}`,
+        to: `${correo}`,
+        subject: 'Verifica tu cuenta en SaborIA',
+        text: `Por favor verifica tu correo entrando a este enlace: https://saboria.onrender.com/verify-email?token=${token}`,
+      };
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Error al enviar el correo:', error);
+        } else {
+          console.log('Correo enviado: ' + info.response);
+        }
+      });
     }
   )});
 });
