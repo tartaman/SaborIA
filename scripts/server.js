@@ -26,7 +26,6 @@ const corsOptions = {
   }
 };
 
-app.use(cors(corsOptions));
 const app = express();
 app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 
