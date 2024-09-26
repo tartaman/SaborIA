@@ -63,7 +63,7 @@ app.get('/verify-email', (req, res) => {
       if (results.length > 0) {
         // Usuario encontrado, actualiza el estado de verificación
         connection.query(
-          'UPDATE users SET isVerified = true WHERE token = ?',
+          'UPDATE usuario SET estado = 1 WHERE token = ?',
           [token],
           (err) => {
             if (err) {
@@ -103,7 +103,6 @@ app.post("/addEmail", (req,res) => {
     return res.status(400).json({message: "Campo o Campos obligatorios no llenados"});
   console.log(`voy a subir ${nombre, apat, amat, correo, username,pass}`)
   const token = crypto.randomBytes(32).toString('hex');
-
   // Hasheamos la contraseña
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) throw err;
