@@ -22,6 +22,12 @@ document.querySelector('#singupform').addEventListener('submit', function(event)
     .then(response => response.json()) // Procesamos la respuesta como JSON
     .then(data => {
         console.log("email agregado con éxito:", data);
+        document.querySelector('#nombre').textContent = ""
+        document.querySelector('#apellidopat').textContent = ""
+        document.querySelector('#apellidomat').textContent = ""
+        document.querySelector('#email').textContent = ""
+        document.querySelector('#usuario').textContent = ""
+        document.querySelector('#contrasena').textContent = ""
     })
     .catch(error => console.error("Error al agregar email: ", error));
 });
