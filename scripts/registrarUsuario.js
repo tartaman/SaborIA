@@ -3,8 +3,8 @@ document.querySelector('#singupform').addEventListener('submit', function(event)
     // Obtenemos los datos del formulario
     const formData = {
         nombre: document.querySelector('#nombre').value,
-        apellidopat: document.querySelector('#apellidopat').value,
-        apellidomat: document.querySelector('#apellidomat').value,
+        apat: document.querySelector('#apellidopat').value,
+        amat: document.querySelector('#apellidomat').value,
         correo: document.querySelector('#email').value,
         username: document.querySelector('#usuario').value,
         pass: document.querySelector('#contrasena').value
