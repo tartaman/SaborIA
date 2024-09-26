@@ -14,11 +14,19 @@ const transporter = nodemailer.createTransport({
     pass: `${contraSaboria}`, // Tu contraseña
   },
 });
+const allowedOrigins = ['https://saboria.me'];
 
 const corsOptions = {
-  origin: '*',  // O permite solicitudes desde una URL específica si es necesario
-  optionsSuccessStatus: 200
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  }
 };
+
+app.use(cors(corsOptions));
 const app = express();
 app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 
