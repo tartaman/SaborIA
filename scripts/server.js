@@ -6,7 +6,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 const saltRounds = 10 //a más, mas tarda
 const correoSaboria = 'appsaboria@gmail.com'
-const contraSaboria = 'Bullet_Kin89$'
+const contraSaboria = 'bamo pqqj szas myuz'
 const transporter = nodemailer.createTransport({
   service: 'gmail', 
   auth: {
