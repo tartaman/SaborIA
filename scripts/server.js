@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     pass: `${contraSaboria}`, // Tu contraseña
   },
 });
-const allowedOrigins = ['https://saboria.me'];
+const allowedOrigins = ['https://saboria.me', 'https://www.saboria.me'];
 
 const corsOptions = {
   origin: (origin, callback) => {
