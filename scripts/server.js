@@ -112,8 +112,8 @@ app.post("/addEmail", (req,res) => {
     bcrypt.hash(password, salt, (err, hash) => {
       if (err) throw err;
       
-      const query = "INSERT INTO u507122559_saboria.usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token) VALUES(?, ?, ?, ?, ?, ?, ?);"
-      connection.query(query, [nombre, apat,amat, correo,hash,0,token], (err,result) => {
+      const query = "INSERT INTO u507122559_saboria.usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token, username) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
+      connection.query(query, [nombre, apat,amat, correo,hash,0,token, username], (err,result) => {
         if (err) {
           console.log(err)
           return res.status(500).json({message:"Error al registrar usuario"});
