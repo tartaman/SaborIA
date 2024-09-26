@@ -109,7 +109,7 @@ app.post("/addEmail", (req,res) => {
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) throw err;
 
-    bcrypt.hash(password, salt, (err, hash) => {
+    bcrypt.hash(pass, salt, (err, hash) => {
       if (err) throw err;
       
       const query = "INSERT INTO u507122559_saboria.usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token, username) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
