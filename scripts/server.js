@@ -184,10 +184,10 @@ app.post("/login", (req, res) => {
       return res.status(401).json({message: "Por favor, verifica tu correo antes de acceder"})
     }
     const storedHash = result[0].pass;
-    bcrypt.compare(pass, storedHash, function(err, result) {
+    bcrypt.compare(pass, storedHash, function(err, isMatch) {
       if (err) throw err;
 
-      if (result) { // Si la contraseña es correcta
+      if (isMatch) { // Si la contraseña es correcta
         const token = jwt.sign({ userId: result[0].id_usuario, email: result[0].correo }, process.env.JWTHASH, { expiresIn: '10h' });
         return res.status(200).json({ token, user: { id: user._id, email: user.email } });
       } else { // Si la contraseña es incorrecta
