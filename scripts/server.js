@@ -135,14 +135,26 @@ app.post("/addEmail", (req,res) => {
     }
   )});
 });
-app.get("/cuentas", (req, res) => {
-  connection.query("SELECT * FROM usuario", 
+app.post("/cuentas", (req, res) => {
+  const {username, pass} = req.body
+  connection.query("SELECT pass FROM usuario WHERE username = ?", [username],
     (err, result) => {
       if (err){
         console.log(err);
         throw err;
       }
       res.json(result)
+      const storedHash = 'stored_hash_from_database';
+      const userProvidedPassword = 'user_input_password';
+
+      bcrypt.compare(userProvidedPassword, storedHash, function(err, result) {
+      if (err) throw err;
+      if (result === true) {
+        // Passwords match, grant access
+      } else {
+        // Passwords do not match, deny access
+      }
+      });
     }
   );
 });
