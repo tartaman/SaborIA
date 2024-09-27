@@ -39,20 +39,30 @@ const connection = mysql.createConnection({
 app.use(express.json())
 //Middlewware para verificar que es un usuario válido
 const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization')?.split(' ')[1]; // Extraer el token del header
+  const token = req.header('Authorization')?.split(' ')[1]; // Obtener el token
   if (!token) {
       return res.status(401).json({ message: 'Acceso denegado. Token no proporcionado.' });
   }
 
   try {
-      // Verificar el token usando la misma clave secreta que en el login
+      // Verificar el token
       const verified = jwt.verify(token, process.env.JWTHASH);
-      req.user = verified; // El payload del token se almacena en req.user
+      req.user = verified; // Guardar los datos del usuario en req.user
       next(); // Pasar al siguiente middleware o controlador
   } catch (error) {
-      res.status(400).json({ message: 'Token inválido.' });
+      if (error.name === 'TokenExpiredError') {
+          // Si el token ha expirado, redirigir o indicar al usuario que inicie sesión de nuevo
+          return res.status(401).json({ message: 'Token expirado. Por favor, inicia sesión de nuevo.', token:0 });
+      }
+      // Otros errores relacionados con el token
+      return res.status(400).json({ message: 'Token inválido.' });
   }
 };
+//Endpoint para verificar el token
+app.post('/verify-token', authMiddleware, (req, res) => {
+  // Si llega hasta aquí, significa que el token es válido
+  res.status(200).json({ valid: true });
+});
 //aqui se crean las API basicamente todo lo que tenga get, va a hacer una api de la cual podremos descargar datos
 app.get("/dificultades", (req, res) => {
   connection.query("SELECT id_dificultad, nombre FROM dificultad;", (err, result) => {
@@ -98,7 +108,7 @@ app.get('/verify-email', (req, res) => {
   );
 });
 
-app.post("/agregar-receta", (req, res) => {
+app.post("/agregar-receta",authMiddleware, (req, res) => {
   const { nombre, tiempo, dificultad, pasos, porciones  } = req.body; // Obtenemos los datos enviados desde el frontend
   if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
     return res.status(400).json({ message: "El nombre es obligatorio" });
@@ -152,29 +162,40 @@ app.post("/addEmail", (req,res) => {
     }
   )});
 });
-app.post("/cuentas", (req, res) => {
-  const {username, pass} = req.body
-  connection.query("SELECT pass FROM usuario WHERE username = ?", [username],
-    (err, result) => {
-      if (err){
-        console.log(err);
-        throw err;
-      }
-      res.json(result)
-      const storedHash = 'stored_hash_from_database';
-      const userProvidedPassword = 'user_input_password';
-
-      bcrypt.compare(userProvidedPassword, storedHash, function(err, result) {
-      if (err) throw err;
-      if (result === true) {
-        // Passwords match, grant access
-      } else {
-        // Passwords do not match, deny access
-      }
-      });
+app.post("/login", (req, res) => {
+  const { username, pass } = req.body;
+  
+  connection.query("SELECT pass, estado FROM usuario WHERE username = ?", [username], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Error en el servidor" });
     }
-  );
+
+    if (result.length === 0) {
+      // Si el usuario no existe
+      return res.status(401).json({ message: "Usuario no encontrado" });
+    }
+    if (result) {
+      //Si devuelve algo, imprimelo
+      console.log(result)
+    }
+    if (result[0].estado == 0) {
+      return res.status(401).json({message: "Por favor, verifica tu correo antes de acceder"})
+    }
+    const storedHash = result[0].pass; // Asume que la contraseña está en la primera fila
+    bcrypt.compare(pass, storedHash, function(err, result) {
+      if (err) throw err;
+
+      if (result) { // Si la contraseña es correcta
+        const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWTHASH, { expiresIn: '10h' });
+        return res.status(200).json({ token, user: { id: user._id, email: user.email } });
+      } else { // Si la contraseña es incorrecta
+        return res.status(401).json({ message: "Contraseña incorrecta" });
+      }
+    });
+  });
 });
+
 // Iniciar el servidor
 app.listen(3000, '0.0.0.0',() => {
   console.log("Servidor corriendo en el puerto 3000");
