@@ -24,7 +24,8 @@ const corsOptions = {
     } else {
       callback(new Error('No permitido por CORS'));
     }
-  }
+  },
+  methods: 'GET,POST'
 };
 
 const app = express();
