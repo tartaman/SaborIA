@@ -182,7 +182,7 @@ app.post("/login", (req, res) => {
     if (result[0].estado == 0) {
       return res.status(401).json({message: "Por favor, verifica tu correo antes de acceder"})
     }
-    const storedHash = result[0].pass; // Asume que la contraseña está en la primera fila
+    const storedHash = result[0].pass;
     bcrypt.compare(pass, storedHash, function(err, result) {
       if (err) throw err;
 
