@@ -189,7 +189,7 @@ app.post("/login", (req, res) => {
 
       if (isMatch) { // Si la contraseña es correcta
         const token = jwt.sign({ userId: result[0].id_usuario, email: result[0].correo }, process.env.JWTHASH, { expiresIn: '10h' });
-        return res.status(200).json({ token, user: { id: user._id, email: user.email } });
+        return res.status(200).json({ token, user: { userid: result[0].id_usuario, email: result[0].correo } });
       } else { // Si la contraseña es incorrecta
         return res.status(401).json({ message: "Contraseña incorrecta" });
       }
