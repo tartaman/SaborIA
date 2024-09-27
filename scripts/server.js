@@ -4,6 +4,7 @@ const express = require("express");
 const nodemailer = require('nodemailer');
 const mysql = require("mysql");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 const saltRounds = 10 //a más, mas tarda
 const correoSaboria = 'appsaboria@gmail.com'
 const contraSaboria = 'bamo pqqj szas myuz'
@@ -30,12 +31,28 @@ const app = express();
 app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 
 const connection = mysql.createConnection({
-  host: "82.197.82.74",
-  database: "u507122559_saboria",
-  user: "u507122559_usersaboria",
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  user: process.env.USER,
   password: process.env.PASSWORD
 });
 app.use(express.json())
+//Middlewware para verificar que es un usuario válido
+const authMiddleware = (req, res, next) => {
+  const token = req.header('Authorization')?.split(' ')[1]; // Extraer el token del header
+  if (!token) {
+      return res.status(401).json({ message: 'Acceso denegado. Token no proporcionado.' });
+  }
+
+  try {
+      // Verificar el token usando la misma clave secreta que en el login
+      const verified = jwt.verify(token, process.env.JWTHASH);
+      req.user = verified; // El payload del token se almacena en req.user
+      next(); // Pasar al siguiente middleware o controlador
+  } catch (error) {
+      res.status(400).json({ message: 'Token inválido.' });
+  }
+};
 //aqui se crean las API basicamente todo lo que tenga get, va a hacer una api de la cual podremos descargar datos
 app.get("/dificultades", (req, res) => {
   connection.query("SELECT id_dificultad, nombre FROM dificultad;", (err, result) => {
