@@ -135,6 +135,17 @@ app.post("/addEmail", (req,res) => {
     }
   )});
 });
+app.get("/cuentas", (req, res) => {
+  connection.query("SELECT * FROM usuario", 
+    (err, result) => {
+      if (err){
+        console.log(err);
+        throw err;
+      }
+      res.json(result)
+    }
+  );
+});
 // Iniciar el servidor
 app.listen(3000, '0.0.0.0',() => {
   console.log("Servidor corriendo en el puerto 3000");
