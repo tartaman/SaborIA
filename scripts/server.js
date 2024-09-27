@@ -165,7 +165,7 @@ app.post("/addEmail", (req,res) => {
 app.post("/login", (req, res) => {
   const { username, pass } = req.body;
   
-  connection.query("SELECT pass, estado FROM usuario WHERE username = ?", [username], (err, result) => {
+  connection.query("SELECT * FROM usuario WHERE username = ?", [username], (err, result) => {
     if (err) {
       console.log(err);
       return res.status(500).json({ message: "Error en el servidor" });
@@ -187,7 +187,7 @@ app.post("/login", (req, res) => {
       if (err) throw err;
 
       if (result) { // Si la contraseña es correcta
-        const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWTHASH, { expiresIn: '10h' });
+        const token = jwt.sign({ userId: result[0].id_usuario, email: result[0].correo }, process.env.JWTHASH, { expiresIn: '10h' });
         return res.status(200).json({ token, user: { id: user._id, email: user.email } });
       } else { // Si la contraseña es incorrecta
         return res.status(401).json({ message: "Contraseña incorrecta" });
