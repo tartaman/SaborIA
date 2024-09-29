@@ -132,7 +132,7 @@ app.post("/addEmail", (req,res) => {
   const {nombre, apat, amat,correo,username,pass} = req.body
   if (!nombre || !apat || !correo || !username || !pass) 
     return res.status(400).json({message: "Campo o Campos obligatorios no llenados"});
-  console.log(`voy a subir ${nombre, apat, amat, correo, username,pass}`)
+  console.log(`voy a subir ${(nombre, apat, amat, correo, username,pass)}`)
   const token = crypto.randomBytes(32).toString('hex');
   // Hasheamos la contraseña
   bcrypt.genSalt(saltRounds, (err, salt) => {
