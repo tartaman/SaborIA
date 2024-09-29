@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaborIA | Sign Up</title>
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <section class="main">
+        <div class="form-container">
+            <h1>Sing-up</h1>
+            <form action="" class="form" id="singupform">
+                <div class="campo-form">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" placeholder="Nombre" name="Nombre" id="nombre" required>
+                    <label for="Apellido_pat">Apellido paterno:</label>
+                    <input type="text" name="Apellido_pat" id="apellidopat" placeholder="Apellido paterno" required>
+                    <label for="Apellido_mat">Apellido materno</label>
+                    <input type="text" name="Apellido_mat" id="apellidomat" placeholder="Apellido Materno" required>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" name="email" id="email" placeholder="ejemplo@correo.com">
+                    <label for="usuario">
+                        Nombre de Usuario:
+                    </label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-input">
+                </div>
+                <div class="campo-form">
+                    <label for="contrasena">
+                        Contraseña:
+                    </label>
+                    <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" class="form-input">
+                </div>
+                <button type="submit">sing-in</button>
+            </form>
+        </div>
+    </section>
+    <script src="scripts/config.js"></script>
+
+<script src="scripts/registrarUsuario.js"></script>
+<script src="scripts/keep_alive_script.js"></script>
+<script src="scripts/preventSQLi.js"></script>
+</body>
+</html>

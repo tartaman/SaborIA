@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaborIA | agregar receta</title>
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/recetas.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"></div>
+        <div class="options">
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="ingredientes.html">Mis Ingredientes</a>
+                </li>
+                <li>
+                    <a href="AgregarReceta.html" class="selected">Mis Recetas</a>
+                </li>
+                <li>
+                    <a href="deseos.html">Deseos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-container">
+        <form action="" id="dificultadForm" method="post">
+                <label for="Nombre" class="form-label">Nombre de la receta:</label> <br>
+                <input type="text" name="Nombre" id="nombre" class="form-input"><br>
+                <label for="Tiempo" class="form-label">Tiempo Preparacion:</label> <br>
+                <input type="number" name="Tiempo" id="tiempo" class="form-input"><br>
+                <label for="dificultad" class="form-label">Dificultad</label><br>
+                <select id="dificultades" name="dificultad">
+                </select><br>
+                <label for="pasos" class="form-label">Pasos:</label> <br>
+                <textarea type="text" name="pasos" id="pasos" class="form-input" cols="40" rows="5" ></textarea><br>
+                <label for="porciones" class="form-label">Porciones:</label> <br>
+                <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input"> <br>
+                <button type="submit" class="submit-button">ya</button>
+        </form>
+        <div class="add-image-container">
+            <div class="add-image-div"></div>
+            <div class="subir-button">Subir Imagen</div>
+        </div>
+    </div>
+
+
+<script src="scripts/config.js"></script>
+<script src="scripts/addoptions.js"></script>
+<script src="scripts/enviarReceta.js"></script>
+<script src="scripts/keep_alive_script.js"></script>
+<script src="./scripts/redirigir-si-nologin.js"></script>
+</body>
+</html>
