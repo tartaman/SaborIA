@@ -52,7 +52,7 @@
     border-radius: 1rem;
 }
 .form-label {
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu', Arial;
     font-weight: 500;
     font-size: var(--font-size);
 }

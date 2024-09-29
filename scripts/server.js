@@ -31,8 +31,8 @@ const corsOptions = {
 };
 
 const app = express();
-app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 app.use(helmet.hidePoweredBy());
+app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 const connection = mysql.createConnection({
   host: process.env.HOST,
   database: process.env.DATABASE,
