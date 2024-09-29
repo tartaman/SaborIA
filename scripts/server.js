@@ -1,3 +1,4 @@
+require('dotenv').config();
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const express = require("express");
@@ -15,8 +16,9 @@ const transporter = nodemailer.createTransport({
     pass: `${contraSaboria}`, // Tu contraseña
   },
 });
-const allowedOrigins = ['https://saboria.me', 'https://www.saboria.me'];
-
+const allowedOrigins = process.env.NODE_ENV === 'development'
+    ? ['https://saboria.me', 'https://www.saboria.me', 'null']
+    : ['https://saboria.me', 'https://www.saboria.me'];
 const corsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -99,7 +101,7 @@ app.get('/verify-email', (req, res) => {
               res.send('Error al verificar el correo');
               return;
             }
-            res.send('¡Tu correo ha sido verificado exitosamente!');
+            res.send(`¡Tu correo ha sido verificado exitosamente! Haz click <a href="https://saboria.me/Iniciarsesion.html">aquí</a> para logearte`);
           }
         );
       } else {
@@ -110,7 +112,7 @@ app.get('/verify-email', (req, res) => {
 });
 
 app.post("/agregar-receta",authMiddleware, (req, res) => {
-  const { nombre, tiempo, dificultad, pasos, porciones, token  } = req.body; // Obtenemos los datos enviados desde el frontend
+  const { nombre, tiempo, dificultad, pasos, porciones} = req.body; // Obtenemos los datos enviados desde el frontend
   if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
     return res.status(400).json({ message: "El nombre es obligatorio" });
   }
@@ -126,6 +128,7 @@ app.post("/agregar-receta",authMiddleware, (req, res) => {
 });
 
 app.post("/addEmail", (req,res) => {
+  let uploadedToDatabase = false;
   const {nombre, apat, amat,correo,username,pass} = req.body
   if (!nombre || !apat || !correo || !username || !pass) 
     return res.status(400).json({message: "Campo o Campos obligatorios no llenados"});
@@ -138,28 +141,33 @@ app.post("/addEmail", (req,res) => {
     bcrypt.hash(pass, salt, (err, hash) => {
       if (err) throw err;
       
-      const query = "INSERT INTO u507122559_saboria.usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token, username) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
+      const query = "INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, correo, pass, estado, token, username) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
       connection.query(query, [nombre, apat,amat, correo,hash,0,token, username], (err,result) => {
         if (err) {
           console.log(err)
           return res.status(500).json({message:"Error al registrar usuario"});
         }
+        uploadedToDatabase = true;
+
         res.status(201).json({message: "Registrado correctamente", id: result.insertId});
-      
       })
-      const mailOptions = {
-        from: `${correoSaboria}`,
-        to: `${correo}`,
-        subject: 'Verifica tu cuenta en SaborIA',
-        text: `Por favor verifica tu correo entrando a este enlace: https://saboria.onrender.com/verify-email?token=${token}`,
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error('Error al enviar el correo:', error);
-        } else {
-          console.log('Correo enviado: ' + info.response);
-        }
-      });
+      uploadedToDatabase = true;
+      if (uploadedToDatabase) {
+        const mailOptions = {
+          from: `${correoSaboria}`,
+          to: `${correo}`,
+          subject: 'Verifica tu cuenta en SaborIA',
+          text: `Por favor verifica tu correo entrando a este enlace: ${process.env.APIHOST}/verify-email?token=${token}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error('Error al enviar el correo:', error);
+          } else {
+            console.log('Correo enviado: ' + info.response);
+          }
+        });
+      }
     }
   )});
 });
