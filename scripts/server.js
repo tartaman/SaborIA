@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10 //a más, mas tarda
 const correoSaboria = 'appsaboria@gmail.com'
 const contraSaboria = 'bamo pqqj szas myuz'
+const helmet = require("helmet")
 const transporter = nodemailer.createTransport({
   service: 'gmail', 
   auth: {
@@ -31,7 +32,7 @@ const corsOptions = {
 };
 
 const app = express();
-app.use(helmet.hidePoweredBy());
+app.use(helmet());
 app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 const connection = mysql.createConnection({
   host: process.env.HOST,
