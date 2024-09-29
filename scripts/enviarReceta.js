@@ -10,7 +10,8 @@ document.querySelector('#dificultadForm').addEventListener('submit', function(ev
         tiempo: document.querySelector('#tiempo').value,
         dificultad: document.querySelector('#dificultades').value,
         pasos: document.querySelector('#pasos').value,
-        porciones: document.querySelector('#porciones').value
+        porciones: document.querySelector('#porciones').value,
+        token: token
     };
 
     console.log(formData);
@@ -30,13 +31,13 @@ document.querySelector('#dificultadForm').addEventListener('submit', function(ev
             // Si el token ha expirado, redirigimos al inicio de sesión
             console.log('Token expirado, redirigiendo al inicio de sesión...');
             localStorage.removeItem('token'); // Limpiamos el token del localStorage
-            window.location.href = '/login'; // Redirigimos al login
+            window.location.href = '../Iniciarsesion.html'; // Redirigimos al login
         } else if (data.message === 'Token inválido.') {
             console.error('Token inválido, acción denegada.');
-            // Opcional: podrías redirigir o mostrar un mensaje de error
+            window.location.href = '../Iniciarsesion.html';
         } else {
             console.log("Receta agregada con éxito:", data);
-            // Aquí puedes manejar el caso exitoso
+            alert("Receta agregada con éxito");
         }
     })
     .catch(error => console.error("Error al agregar la receta:", error));

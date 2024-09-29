@@ -110,13 +110,13 @@ app.get('/verify-email', (req, res) => {
 });
 
 app.post("/agregar-receta",authMiddleware, (req, res) => {
-  const { nombre, tiempo, dificultad, pasos, porciones  } = req.body; // Obtenemos los datos enviados desde el frontend
+  const { nombre, tiempo, dificultad, pasos, porciones, token  } = req.body; // Obtenemos los datos enviados desde el frontend
   if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
     return res.status(400).json({ message: "El nombre es obligatorio" });
   }
   console.log(`voy a subir ${nombre, tiempo, dificultad, pasos,porciones}`)
   const query = "INSERT INTO receta(titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie, estado) VALUES (?,?,?,?,?,?,?,?,?)";
-  connection.query(query, [nombre,1,tiempo,null,dificultad,pasos,porciones,1,1], (err, result) => {
+  connection.query(query, [nombre,req.user.userId,tiempo,null,dificultad,pasos,porciones,1,1], (err, result) => {
     if (err) {
       console.log(err)
       return res.status(500).json({ message: "Error al agregar la receta" });
