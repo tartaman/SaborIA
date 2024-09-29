@@ -8,7 +8,7 @@
     --moradito: #C5B3FF;
 }
 * {
-    font-family: "Roboto";
+    font-family: "Roboto", Arial;
 }
 .main {
     height: 100vh;
