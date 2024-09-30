@@ -43,8 +43,9 @@
                 <button type="submit" class="submit-button">ya</button>
         </form>
         <div class="add-image-container">
-            <div class="add-image-div"></div>
-            <div class="subir-button">Subir Imagen</div>
+            <div class="add-image-div" id="targetImageDiv"></div>
+            <div class="subir-button" id="uploadDiv">Subir Imagen</div>
+            <input type="file" name="" id="fileInput" style="display: none;" accept="image/*">
         </div>
     </div>
 
@@ -54,5 +55,6 @@
 <script src="scripts/enviarReceta.js"></script>
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
+<script src="scripts/subirImagenLocal.js"></script>
 </body>
 </html>
