@@ -172,13 +172,13 @@ app.post('/agregar-receta', authMiddleware, (req, res) => {
     if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
       return res.status(400).json({ message: "El nombre es obligatorio" });
     }
-    console.log(`voy a subir ${nombre, tiempo, dificultad, pasos,porciones}`)
     const userId = req.user.userId;
+    console.log(`voy a subir ${nombre} ${tiempo} ${dificultad} ${pasos} ${porciones} ${userId}`)
 
-    const query = "INSERT INTO receta (titulo, tiempo, id_dificultad, pasos, porciones, creador, global_recipie) VALUES (?, ?, ?, ?, ?, ?,?)";
+    const query = "INSERT INTO receta (titulo, tiempo_preparacion, id_dificultad, pasos, porciones, creador, global_recipie) VALUES (?, ?, ?, ?, ?, ?,?)";
     connection.query(query, [nombre, tiempo, dificultad, pasos, porciones, userId,0], (err, result) => {
         if (err) {
-            return res.status(500).json({ message: 'Error al agregar la receta' });
+            return res.status(500).json({ message: 'Error al agregar la receta' + err });
         }
 
         // Devolver el ID de la receta recién agregada
@@ -264,10 +264,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-// Iniciar el servidor
-app.listen(3000, '0.0.0.0',() => {
-  console.log("Servidor corriendo en el puerto 3000");
-});
 
 //no me maten basicamente querys cada 5 segundos para que el servidor no me saque
 setInterval(() => {
