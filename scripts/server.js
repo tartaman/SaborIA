@@ -161,25 +161,56 @@ app.get('/verify-email', (req, res) => {
     }
   );
 });
-
 app.post('/agregar-receta', authMiddleware, (req, res) => {
-    const { nombre, tiempo, dificultad, pasos, porciones } = req.body;
-    if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
-      return res.status(400).json({ message: "El nombre es obligatorio" });
+  const { nombre, tiempo, dificultad, pasos, porciones } = req.body;
+  if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
+    return res.status(400).json({ message: "Todos los campos son obligatorios" });
+  }
+  const userId = req.user.userId;
+  console.log(`voy a subir ${nombre} ${tiempo} ${dificultad} ${pasos} ${porciones} ${userId}`);
+  
+  const query_limite = "SELECT COUNT(id_receta) as num_recetas, u.premium_recetas FROM receta r INNER JOIN usuario u ON u.id_usuario = r.creador WHERE creador = ? GROUP BY r.creador";
+  connection.query(query_limite, [userId], (err, result) => {
+    if (err) throw err;
+    
+    let can_create_recipe = false;
+    let isPremium = false;
+    let msj = "";
+
+    if (result.length === 0) {
+      can_create_recipe = true; // El usuario no tiene recetas, puede crear una
+      msj = "No ha creado ninguna receta, puede crear la receta.";
+    } else {
+      if (result[0].premium_recetas == 1) {
+        isPremium = true;
+      }
+
+      if (result[0].num_recetas < 10) {
+        can_create_recipe = true;
+        msj = "Ha creado menos de 10 recetas, puede crear la receta.";
+      } else if (isPremium) {
+        can_create_recipe = true;
+        msj = "Es premium, por lo que puede agregar más recetas.";
+      } else {
+        can_create_recipe = false;
+        msj = "Ha alcanzado el límite de recetas permitidas.";
+      }
     }
-    const userId = req.user.userId;
-    console.log(`voy a subir ${nombre} ${tiempo} ${dificultad} ${pasos} ${porciones} ${userId}`)
 
-    const query = "INSERT INTO receta (titulo, tiempo_preparacion, id_dificultad, pasos, porciones, creador, global_recipie) VALUES (?, ?, ?, ?, ?, ?,?)";
-    connection.query(query, [nombre, tiempo, dificultad, pasos, porciones, userId,0], (err, result) => {
+    if (can_create_recipe) {
+      const query = "INSERT INTO receta (titulo, tiempo_preparacion, id_dificultad, pasos, porciones, creador, global_recipie) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      connection.query(query, [nombre, tiempo, dificultad, pasos, porciones, userId, 0], (err, result) => {
         if (err) {
-            return res.status(500).json({ message: 'Error al agregar la receta' + err });
+          return res.status(500).json({ message: 'Error al agregar la receta: ' + err });
         }
-
-        // Devolver el ID de la receta recién agregada
         res.status(201).json({ message: 'Receta agregada correctamente', recetaId: result.insertId });
-    });
+      });
+    } else {
+      res.status(403).json({ message: "Error: " + msj });
+    }
+  });
 });
+
 //Relacionado a verificacion o pulls a la db ------------------------------------------------------------------
 //Endpoint para verificar el token
 app.post('/verify-token', authMiddleware, (req, res) => {

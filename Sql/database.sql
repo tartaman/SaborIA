@@ -72,6 +72,11 @@ ALTER TABLE usuario
 ADD COLUMN token varchar(255) DEFAULT "";
 ALTER TABLE usuario
 ADD COLUMN username varchar(255) DEFAULT "";
+ALTER TABLE usuario 
+ADD COLUMN premium_recetas BOOL DEFAULT false;
+ALTER TABLE receta
+ADD CONSTRAINT UNIQUE(titulo);
+
 INSERT INTO medida(nombre, simbolo, estado) VALUES("Gramo", "g", TRUE),
 ("Kilogramo", "Kg", TRUE),
 ("Mililitro", "ml", TRUE),
