@@ -17,8 +17,8 @@ document.querySelector(`#singupform`).addEventListener(`submit`, function(event)
         username: document.querySelector(`#usuario`).value,
         pass: document.querySelector(`#contrasena`).value
     };
-    console.log(formData)
-    pelalo()
+    console.log(formData);
+    pelalo();
     // Hacemos una solicitud POST con fetch al backend
     fetch(`${API_URL}/addEmail`, {
         method: `POST`,
@@ -33,4 +33,5 @@ document.querySelector(`#singupform`).addEventListener(`submit`, function(event)
         
     })
     .catch(error => console.error(`Error al agregar email: `, error));
+    window.location.href = "./verificar.html";
 });

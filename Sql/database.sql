@@ -25,7 +25,7 @@ CREATE TABLE usuario(
     apellido_paterno VARCHAR(100),
     apellido_materno VARCHAR(100),
     correo VARCHAR(100),
-    pass Varchar(50),
+    pass Varchar(255),
     estado BOOL DEFAULT TRUE,
     CONSTRAINT UQ_CORREO UNIQUE (correo)
 );
