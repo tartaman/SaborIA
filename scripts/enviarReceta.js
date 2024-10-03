@@ -23,7 +23,6 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
     };
 
     console.log(formData);
-    clearForms();
     // Hacemos una solicitud POST con fetch al backend
     fetch(`${API_URL}/agregar-receta`, {
         method: `POST`,
@@ -65,17 +64,20 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                 msj = data.message
             }
             //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
-            if (canUpload) {//Si el dato en la base de datos no está duplicado
+            if (canUpload) {
                 // Subir la imagen aquí
                 const recetaId = data.recetaId; // Obtener el ID de la receta
                 const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos
-    
                 const imageFormData = new FormData();
-                const imageFile = document.querySelector('#fileInput').files[0]; // Asegúrate de tener un input de tipo file
+                const imageFile = document.querySelector('#fileInput').files[0];
+                if (!imageFile) {
+                    alert('Por favor selecciona una imagen.');
+                    return;
+                }
+                console.log('Archivo seleccionado:', imageFile); // Asegurarnos de tener un input de tipo file
                 imageFormData.append('image', imageFile);
                 imageFormData.append('recetaNombre', recetaNombre); // Pasar el nombre de la receta
                 imageFormData.append('recetaId', recetaId); // Pasar el ID de la receta
-    
                 return fetch(`${API_URL}/upload`, {
                     method: 'POST',
                     headers: {
@@ -84,7 +86,8 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                     body: imageFormData
                 });
             } else {
-                alert(msj)
+                alert(msj);
+                return msj;
             }
 
         }

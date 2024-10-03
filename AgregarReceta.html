@@ -30,22 +30,22 @@
     <div class="main-container">
         <form action="" id="dificultadForm" method="post">
                 <label for="Nombre" class="form-label">Nombre de la receta:</label> <br>
-                <input type="text" name="Nombre" id="nombre" class="form-input"><br>
+                <input type="text" name="Nombre" id="nombre" class="form-input input"><br>
                 <label for="Tiempo" class="form-label">Tiempo Preparacion:</label> <br>
-                <input type="number" name="Tiempo" id="tiempo" class="form-input"><br>
+                <input type="number" name="Tiempo" id="tiempo" class="form-input input"><br>
                 <label for="dificultad" class="form-label">Dificultad</label><br>
                 <select id="dificultades" name="dificultad">
                 </select><br>
                 <label for="pasos" class="form-label">Pasos:</label> <br>
                 <textarea type="text" name="pasos" id="pasos" class="form-input" cols="40" rows="5" ></textarea><br>
                 <label for="porciones" class="form-label">Porciones:</label> <br>
-                <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input"> <br>
+                <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input input"> <br>
                 <button type="submit" class="submit-button">Subir receta</button>
         </form>
         <div class="add-image-container">
             <div class="add-image-div" id="targetImageDiv"></div>
             <div class="subir-button" id="uploadDiv">Subir Imagen</div>
-            <input type="file" name="" id="fileInput" style="display: none;" accept="image/*">
+            <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
         </div>
     </div>
 
@@ -56,6 +56,6 @@
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
 <script src="scripts/subirImagenLocal.js"></script>
-<script src="scripts/preventSQLi.js"></script>
+<script src="scripts/PreventSQLiRecipe.js"></script>
 </body>
 </html>

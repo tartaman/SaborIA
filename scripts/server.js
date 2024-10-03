@@ -82,7 +82,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } });
 
 // Ruta para subir imágenes
 app.post('/upload', authMiddleware, upload.single('image'), (req, res) => {
@@ -164,6 +164,7 @@ app.get('/verify-email', (req, res) => {
 app.post('/agregar-receta', authMiddleware, (req, res) => {
   const { nombre, tiempo, dificultad, pasos, porciones } = req.body;
   if (!nombre || !tiempo || !dificultad || !pasos || !porciones) {
+    console.log(req.body)
     return res.status(400).json({ message: "Todos los campos son obligatorios" });
   }
   const userId = req.user.userId;
