@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/liberation-sans');
+
+:root{
+    --fuente_titulos: Itim, Arial, Helvetica, sans-serif;
+    --fuente_principal: 'Liberation Sans', Arial, Helvetica, sans-serif;
+
+    --background-color: #A7CCA8;
+    --kinda-white: #FFFCEF;
+    --logo:url('../Images/Logo.png');
+    --text-color: #00695C;
+    --verde-principal: #66BB6A;
+    --kinda-black:#1c1c1c;
+    --moradito: #C5B3FF;
+    --grisaceo: #f0f0f0;
+
+    --mobile-size: 480px;
+    --tablet-size: 768px;
+}
+
+
+
+/*
+Esto que pongo a continuación es para que un rem sea equivalente a 10px así 
+que es más facil
+*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+}
+body {
+    font-family: var(--fuente_principal);
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*Ya aqui ya son globales*/
+
+h1{
+    font-family: var(--fuente_titulos);
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+h2{
+    font-family: var(--fuente_titulos);
+    font-size: 3.2rem;
+}
+
+h3{
+    font-family: var(--fuente_titulos);
+    font-size: 2.1rem;
+}
+
+p, label, input, button{
+    font-family: var(--fuente_principal);
+}
