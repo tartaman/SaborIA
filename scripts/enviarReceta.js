@@ -85,6 +85,7 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                     },
                     body: imageFormData
                 });
+                
             } else {
                 alert(msj);
                 return msj;

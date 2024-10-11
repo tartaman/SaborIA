@@ -128,6 +128,15 @@ app.get("/dificultades", (req, res) => {
   });
 });
 
+app.get('/ingredientes', (req, res) => {
+  connection.query("SELECT * FROM ingrediente", (err,result) => {
+    if (err) {
+      return res.status(500).send('Error en la consulta de la base de datos');
+    }
+    res.json(result);
+    console.log(result);
+  })
+});
 app.get('/verify-email', (req, res) => {
   const token = req.query.token; // Obtenemos el token desde la URL
   // Primero buscamos el token en la base de datos
