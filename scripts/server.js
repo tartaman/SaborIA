@@ -129,7 +129,7 @@ app.get("/dificultades", (req, res) => {
 });
 
 app.get('/ingredientes', (req, res) => {
-  connection.query("SELECT * FROM ingrediente", (err,result) => {
+  connection.query("SELECT i.*, m.simbolo FROM ingrediente i INNER JOIN medida m ON i.id_medida = m.id_medida", (err,result) => {
     if (err) {
       return res.status(500).send('Error en la consulta de la base de datos');
     }

@@ -85,6 +85,49 @@
     font-size: var(--font-size);
     background-color: var(--moradito);
 }
+.ingredients-container {
+    overflow-y: scroll;
+    height: 45vh;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    background-color: var(--kinda-white);
+}
+.ingredients-input {
+    width:100%;
+    border-radius: 2rem;
+
+}
+/* ingredientes cajitas */
+.ingredient-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingredient-image {
+    width: 50%;
+    aspect-ratio: 1;
+}
+
+.ingredient-title {
+    font-weight: bold;
+}
+
+.ingredient-count {
+    width: 50px;
+}
+.ingredient-unidad {
+    color:red;
+}
+#ingredients {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 @media (max-width:800px) {
     :root {
         --font-size:1.5rem;
@@ -95,7 +138,7 @@
     .main-container {
         margin: 0;
         padding: 0;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .add-image-container {
         width: 100%;
