@@ -8,6 +8,7 @@ function clearForms() {
     if (targetImageDiv) {
         targetImageDiv.style.backgroundImage = "url('./Images/Add_image_placeholder.png')"; // Establece la imagen de fondo 
     }
+    document.querySelector("#ingredients-list").innerHTML = "";
 }
 // Capturamos el envío del formulario
 document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(event) {
@@ -65,6 +66,23 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
             }
             //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
             if (canUpload) {
+                selectedIngredientsObject.forEach(ingredient => {
+                    ingredient.recetaId = data.recetaId;
+                    fetch(`${API_URL}/ingredientes-receta`, {
+                        method: `POST`,
+                        headers: {
+                            'Content-Type': `application/json`, // Indicamos que estamos enviando JSON
+                            'Authorization': `Bearer ${token}` // Incluimos el token en los headers
+                        },
+                        //por cada elemento del arreglo de ingredientes, se envia al backend
+                        body: JSON.stringify(ingredient)
+                    }).then(response => response.ok ? response.json() : Promise.reject(response))
+                    .then(data => {
+                        console.log(`Ingrediente agregado:`, data);
+            
+                    })
+                    .catch(error => console.error(`Error al agregar el ingrediente:`, error));
+                });
                 // Subir la imagen aquí
                 const recetaId = data.recetaId; // Obtener el ID de la receta
                 const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos

@@ -25,6 +25,18 @@ function createIngredientDiv(ingredient) {
     inputNumber.min = "1";
     inputNumber.value = "1";
     inputNumber.classList.add("ingredient-count");
+
+    //prevenir el comportamiento default de el input al hacer enter
+    inputNumber.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+    //añadir un event listener al imput para cuando cambie
+    inputNumber.addEventListener("change", function() {
+        console.log(`Cantidad cambiada para ${ingredient.nombre}: ${inputNumber.value}`);
+        selectedIngredientsObject.find(item => item.nombre === ingredient.nombre).cantidad = parseInt(inputNumber.value);
+    });
     //Poner la unidad debajo del input
     const unidad = document.createElement("span");
     unidad.innerText = ingredient.simbolo;
@@ -69,16 +81,19 @@ input.addEventListener("change", function(event) {
                 alert("Este ingrediente ya ha sido agregado.");
                 input.value = ''; // Limpiar el input
                 return;
+            } else {
+                // Agregar el ingrediente seleccionado al contenedor
+                createIngredientDiv(selectedIngredient);
+                // Agregar el ingrediente al Set de ingredientes seleccionados
+                selectedIngredients.add(selectedIngredient.nombre);
+                selectedIngredientsObject.push(selectedIngredient);
+                selectedIngredientsObject[selectedIngredientsObject.length - 1].cantidad = 1;
+                // Limpiar el campo de texto
+                input.value = '';
             }
+            console.log(selectedIngredientsObject);
 
-            // Agregar el ingrediente seleccionado al contenedor
-            createIngredientDiv(selectedIngredient);
 
-            // Agregar el ingrediente al Set de ingredientes seleccionados
-            selectedIngredients.add(selectedIngredient.nombre);
-            selectedIngredientsObject.push(selectedIngredient);
-            // Limpiar el campo de texto
-            input.value = '';
         } else {
             console.log("Ingrediente no encontrado");
         }
@@ -96,6 +111,7 @@ fetch(`${API_URL}/ingredientes`)
         data.forEach(ingrediente => {
             const ingredienteOpt = document.createElement('option');
             ingredienteOpt.value = ingrediente.nombre;
+            ingredienteOpt.innerHTML = ingrediente.id_ingrediente;
             datalist.appendChild(ingredienteOpt);
         });
     })

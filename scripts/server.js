@@ -139,6 +139,21 @@ app.get('/ingredientes', (req, res) => {
     console.log(result);
   })
 });
+app.post('/ingredientes-receta',authMiddleware, (req, res) => {
+  const {ingrediente} = req.body; // Obtenemos los datos del cuerpo de la solicitud
+  if (!ingrediente) {
+    return res.status(400).json({ message: "Todos los campos son obligatorios" });
+  };
+
+  console.log(req.body)
+  conection.query("INSERT INTO receta_ingrediente (id_receta, id_ingrediente, cantidad) VALUES (?, ?, ?)", 
+    [ingrediente.recetaId, ingrediente.id_ingrediente, ingrediente.cantidad], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error al agregar los ingredientes a la receta' });
+    }
+    res.status(200).json({ message: `Ingrediente con id ${id_ingrediente} agregado correctamente` });
+  });
+});
 app.get('/verify-email', (req, res) => {
   const token = req.query.token; // Obtenemos el token desde la URL
   // Primero buscamos el token en la base de datos
