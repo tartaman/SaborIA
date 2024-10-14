@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Saboria;
-Create DATABASE Saboria;
-USE Saboria;
+DROP DATABASE IF EXISTS saboria;
+Create DATABASE saboria;
+USE saboria;
 
 CREATE TABLE medida(
 	id_medida INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -209,3 +209,55 @@ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dific
 \nAgregar la mezcla anterior a los spaghettis secos, mezclar a fuego lento hasta integrar todo y ¡listo!", 6, TRUE);
 
 INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(50, 7, 21), (39, 7, 250), (43, 7, 1000), (51, 7, 50);
+
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Arroz.png' WHERE id_ingrediente = 1;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Huevo.png' WHERE id_ingrediente = 2;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Pollo.png' WHERE id_ingrediente = 3;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Aceite.png' WHERE id_ingrediente = 4;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Carne.png' WHERE id_ingrediente = 5;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Sal.png' WHERE id_ingrediente = 6;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Pimienta.png' WHERE id_ingrediente = 7;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Tomate.png' WHERE id_ingrediente = 8;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Cebolla.png' WHERE id_ingrediente = 9;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Cilantro.png' WHERE id_ingrediente = 10;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Limón.png' WHERE id_ingrediente = 11;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Naranja_agria.png' WHERE id_ingrediente = 12;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Zanahoria.png' WHERE id_ingrediente = 13;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Elote.png' WHERE id_ingrediente = 14;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Dientes_de_ajo.png' WHERE id_ingrediente = 15;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Aguacate.png' WHERE id_ingrediente = 16;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Agua.png' WHERE id_ingrediente = 17;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Chile_habanero.png' WHERE id_ingrediente = 18;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Chile_Morron.png' WHERE id_ingrediente = 19;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Harina.png' WHERE id_ingrediente = 20;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Lechuga.png' WHERE id_ingrediente = 21;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Chayote.png' WHERE id_ingrediente = 22;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Mayonesa.png' WHERE id_ingrediente = 23;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Guisantes.png' WHERE id_ingrediente = 24;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Atún.png' WHERE id_ingrediente = 25;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Jamón.png' WHERE id_ingrediente = 26;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Levadura.png' WHERE id_ingrediente = 27;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Chile_guajillo.png' WHERE id_ingrediente = 28;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Epazote.png' WHERE id_ingrediente = 29;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Tortilla.png' WHERE id_ingrediente = 30;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Totopos.png' WHERE id_ingrediente = 31;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Crema_ácida.png' WHERE id_ingrediente = 32;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_fresco.png' WHERE id_ingrediente = 33;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_oaxaca.png' WHERE id_ingrediente = 34;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Aceite_de_Oliva.png' WHERE id_ingrediente = 35;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Frijol_refrito.png' WHERE id_ingrediente = 36;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Chile_morita.png' WHERE id_ingrediente = 37;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_cotija.png' WHERE id_ingrediente = 38;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Media_crema.png' WHERE id_ingrediente = 39;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Carne_de_res_molida.png' WHERE id_ingrediente = 40;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Pimentón.png' WHERE id_ingrediente = 41;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Paprika.png' WHERE id_ingrediente = 42;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Pasta_de_tomate.png' WHERE id_ingrediente = 43;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Azúcar.png' WHERE id_ingrediente = 44;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Pechuga_de_pollo.png' WHERE id_ingrediente = 45;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Repollo.png' WHERE id_ingrediente = 46;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Calabaza.png' WHERE id_ingrediente = 47;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Calabacita.png' WHERE id_ingrediente = 48;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Paquetes_de_pasta_spagetti.png' WHERE id_ingrediente = 49;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Barra_de_mantequilla.png' WHERE id_ingrediente = 50;
+UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_manchego.png' WHERE id_ingrediente = 51;

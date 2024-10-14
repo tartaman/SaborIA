@@ -1,0 +1,16 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: saboria_db
+    environment:
+      MYSQL_ROOT_PASSWORD:  ${MYSQL_ROOT_PASSWORD} # Cambia este valor
+      MYSQL_DATABASE: ${MYSQL_DATABASE}         # Nombre de tu base de datos
+      MYSQL_USER: ${MYSQL_USER}                   # Usuario de la base de datos
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}    # Contraseña del usuario
+    ports:
+      - "${dockerport}:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./Sql:/docker-entrypoint-initdb.d # Volumen con scripts de inicialización
+volumes:
+  mariadb_data:

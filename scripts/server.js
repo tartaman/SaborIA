@@ -42,9 +42,9 @@ const connection = mysql.createConnection({
 
   host: process.env.HOST,
   database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  port:3307
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  port: process.env.dockerport
 });
 app.use(express.json())
 //Middlewware para verificar que es un usuario válido
@@ -130,6 +130,15 @@ app.get("/dificultades", (req, res) => {
   });
 });
 
+app.get('/ingredientes', (req, res) => {
+  connection.query("SELECT i.*, m.simbolo FROM ingrediente i INNER JOIN medida m ON i.id_medida = m.id_medida", (err,result) => {
+    if (err) {
+      return res.status(500).send('Error en la consulta de la base de datos');
+    }
+    res.json(result);
+    console.log(result);
+  })
+});
 app.get('/verify-email', (req, res) => {
   const token = req.query.token; // Obtenemos el token desde la URL
   // Primero buscamos el token en la base de datos
@@ -350,5 +359,5 @@ app.listen(3000, '0.0.0.0',() => {
 
 //no me maten basicamente querys cada 5 segundos para que el servidor no me saque
 setInterval(() => {
-  connection.query('SELECT 1');
+  connection.query('USE saboria;');
 }, 5000); 
