@@ -39,6 +39,7 @@ const app = express();
 app.use(helmet());
 app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu caso, el frontend).
 const connection = mysql.createConnection({
+
   host: process.env.HOST,
   database: process.env.DATABASE,
   user: process.env.MYSQL_USER,
