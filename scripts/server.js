@@ -41,8 +41,9 @@ app.use(cors(corsOptions)); // Para permitir peticiones desde otro origen (en tu
 const connection = mysql.createConnection({
   host: process.env.HOST,
   database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  port: process.env.dockerport
 });
 app.use(express.json())
 //Middlewware para verificar que es un usuario válido
@@ -357,5 +358,5 @@ app.listen(3000, '0.0.0.0',() => {
 
 //no me maten basicamente querys cada 5 segundos para que el servidor no me saque
 setInterval(() => {
-  connection.query('SELECT 1');
+  connection.query('USE saboria;');
 }, 5000); 

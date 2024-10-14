@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Saboria;
-Create DATABASE Saboria;
-USE Saboria;
+DROP DATABASE IF EXISTS saboria;
+Create DATABASE saboria;
+USE saboria;
 
 CREATE TABLE medida(
 	id_medida INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
