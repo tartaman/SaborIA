@@ -68,6 +68,7 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
             if (canUpload) {
                 selectedIngredientsObject.forEach(ingredient => {
                     ingredient.recetaId = data.recetaId;
+                    console.log(ingredient)
                     fetch(`${API_URL}/ingredientes-receta`, {
                         method: `POST`,
                         headers: {
@@ -76,7 +77,7 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                         },
                         //por cada elemento del arreglo de ingredientes, se envia al backend
                         body: JSON.stringify(ingredient)
-                    }).then(response => response.ok ? response.json() : Promise.reject(response))
+                    }).then(response => response.json())
                     .then(data => {
                         console.log(`Ingrediente agregado:`, data);
             
