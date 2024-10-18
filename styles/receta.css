@@ -1,13 +1,23 @@
 #container-recetas {
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
+    justify-content: space-evenly;
 }
 
 .receta {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    padding: 2rem;
+    align-items: center;
+    width: 40vw;
+    border-radius: 1rem ;
     aspect-ratio: 1;
     background-color: beige;
+    margin: 5vh 1vw;
+}
+
+.dificultad-receta-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
