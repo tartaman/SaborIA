@@ -3,3 +3,11 @@
     flex-wrap: wrap;
     gap: 4rem;
 }
+
+.receta {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    aspect-ratio: 1;
+    background-color: beige;
+}

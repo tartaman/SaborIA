@@ -11,6 +11,8 @@ fetch(`${API_URL}/Recetas`, {
 
     data.forEach(receta => {
         mainDiv = document.createElement("div");
+        mainDiv.classList.add("receta");
+        
         imagen = document.createElement("img");
         titulo = document.createElement("h1");
         titulo.textContent = receta.titulo;
