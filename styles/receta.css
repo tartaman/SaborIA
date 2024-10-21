@@ -14,8 +14,11 @@
     aspect-ratio: 1;
     background-color: beige;
     margin: 5vh 1vw;
+    justify-content: space-around;
 }
-
+.receta img {
+    width: 100%;
+}
 .dificultad-receta-container {
     display: flex;
     width: 100%;
