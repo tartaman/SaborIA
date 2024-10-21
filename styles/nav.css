@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-:root {
-    --background-color: #A7CCA8;
-    --kinda-white: #FFFCEF;
-    --logo:url('../Images/Logo.png');
-    --text-color: #00695C;
-    --kinda-black:#1c1c1c;
-    --moradito: #C5B3FF;
-}
+
 * {
     font-family:"Roboto", sans-serif;
     font-weight: 400;
@@ -27,12 +20,12 @@ body {
 }
 .logo {
     height: 100px;
-    width: 100px;
+    width: 165px;
     background-image: var(--logo);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 100%;
+    
 }
 .options{
     width: 50%;
