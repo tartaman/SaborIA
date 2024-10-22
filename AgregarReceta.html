@@ -34,10 +34,12 @@
                     <label for="nombre" class="form-label">Nombre de la receta:</label> 
                     <input type="text" name="Nombre" id="nombre" class="form-input input" placeholder="Agrega un nombre para tu receta">
                 </div>
+
                 <div class="div-campo">
-                    <label for="Tiempo" class="form-label">Tiempo Preparacion:</label>
-                <input type="number" name="Tiempo" id="tiempo" class="form-input input">
+                    <label for="Descripcion" class="form-label">Descripcion:</label>
+                    <textarea name="Descripcion" id="descripcion" class="form-input input" placeholder="Descripción" rows="4"></textarea>
                 </div>
+                
                 <div class="div-campo">
                     <label for="pasos" class="form-label">Pasos:</label> <br>
                     <textarea type="text" name="pasos" id="pasos" class="form-input" cols="40" rows="5" ></textarea>
@@ -53,18 +55,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="div-campo"></div>
-                <div class="div-campo"></div>
+                
                 <div class="add-image-container">
-                    <div class="add-image-div" id="targetImageDiv"></div>
-                    <div class="subir-button" id="uploadDiv">Subir Imagen</div>
+                    <div class="flex-left">
+                        <div class="add-image-div" id="targetImageDiv"></div>
+                        <div class="subir-button" id="uploadDiv">Subir Imagen</div>
+                    </div>
                     <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
                     <div class="containers">
-                        <label for="dificultad" class="form-label">Dificultad</label>
-                        <select id="dificultades" name="dificultad">
-                        </select>
-                        <label for="porciones" class="form-label">Porciones:</label>
-                        <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input input">
+                        <div class="div-campo">
+                            <label for="dificultad" class="form-label">Dificultad</label>
+                            <select id="dificultades" name="dificultad">
+
+                            </select>
+                        </div>
+                        <div class="div-campo">
+                            <label for="porciones" class="form-label">Porciones:</label>
+                            <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input input">
+                        </div>
+                        <div class="div-campo">
+                            <label for="Tiempo" class="form-label">Tiempo Preparacion:</label>
+                            <input type="number" name="Tiempo" id="tiempo" class="form-input input">
+                        </div>
                     </div>
                 </div>
 

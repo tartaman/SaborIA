@@ -17,6 +17,7 @@ body {
     padding: 1rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.116);
     margin-bottom: 2rem;
+    width: 100%;
 }
 .logo {
     height: 100px;
@@ -47,10 +48,24 @@ body {
     color: var(--text-color);
 }
 
-@media (max-width:800px) {
+@media (max-width:1020px) {
     .options ul {
         justify-content: start;
         gap: 1rem;
-        list-style-type: disc;
+    }
+}
+
+@media(max-width: 760px){
+    .navbar{
+        flex-direction: column;
+    }
+    .options{
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .options ul{
+        flex-direction: row;
+        padding: 0;
+        justify-content: space-between;
     }
 }
