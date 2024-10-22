@@ -40,6 +40,12 @@ fetch(`${API_URL}/Recetas`, {
         mainDiv.appendChild(imagen);
          //meter dificultadReceta en el mainDiv
          mainDiv.appendChild(dificultadReceta);
+         //añadirle al contenedor un listener de click en el que mande al usuario a otra ventana
+         mainDiv.addEventListener("click", () => {
+            const url = `detalle.html?IDR=${receta.id_receta}`; // Aquí utilizas el ID o un identificador único
+            window.location.href = url;
+        });
+        
         containerRecetas.appendChild(mainDiv);
     });
 })
