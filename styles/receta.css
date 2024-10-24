@@ -1,0 +1,26 @@
+#container-recetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.receta {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    width: 40vw;
+    border-radius: 1rem ;
+    aspect-ratio: 1;
+    background-color: beige;
+    margin: 5vh 1vw;
+    justify-content: space-around;
+}
+.receta img {
+    width: 100%;
+}
+.dificultad-receta-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

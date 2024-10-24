@@ -21,7 +21,7 @@ document.querySelector(`#login`).addEventListener(`submit`, function (event) {
             // Login exitoso, procesamos el token
             console.log(`Login realizado con éxito`, body);
             localStorage.setItem(`token`, body.token); // Guardamos el token en localStorage
-            window.location.href = `../index.html`; // Redirigimos al perfil
+            window.location.href = `./index.html`; // Redirigimos al perfil
         } else if (status === 401) {
             // Contraseña incorrecta o usuario no encontrado
             console.log(`Error de autenticación:`, body.message);

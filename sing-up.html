@@ -4,38 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaborIA | Sign Up</title>
-    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
-    <section class="main">
-        <div class="form-container">
-            <h1>Sing-up</h1>
-            <form action="" class="form" id="singupform">
+    <main class="main">
+        <div class="sign-up-container">
+            <div class="image-container">
+                <img src="Images/wallpaperLogin.jpg" alt="">
+            </div>
+            <form action="verificar.html" class="form-sign" id="singupform">
+                <h1>Crear cuenta</h1>
+                <p>Rellena los siguientes campos para registrarte</p>
                 <div class="campo-form">
-                    <label for="Nombre">Nombre:</label>
-                    <input type="text" placeholder="Nombre" name="Nombre" id="nombre" required>
-                    <label for="Apellido_pat">Apellido paterno:</label>
-                    <input type="text" name="Apellido_pat" id="apellidopat" placeholder="Apellido paterno" required>
-                    <label for="Apellido_mat">Apellido materno</label>
-                    <input type="text" name="Apellido_mat" id="apellidomat" placeholder="Apellido Materno" required>
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" name="email" id="email" placeholder="ejemplo@correo.com">
-                    <label for="usuario">
-                        Nombre de Usuario:
-                    </label>
+                    <input type="text" placeholder="Nombre" name="Nombre" class="form-input" id="nombre" required>
+                    <div>
+                        <input type="text" name="Apellido_pat" id="apellidopat" class="form-input" placeholder="Apellido paterno" required >
+                        <input type="text" name="Apellido_mat" id="apellidomat" class="form-input" placeholder="Apellido Materno" required>
+                    </div>
+                    <input type="email" name="email" id="email" class="form-input" placeholder="ejemplo@correo.com" required>
                     <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-input">
-                </div>
-                <div class="campo-form">
-                    <label for="contrasena">
-                        Contraseña:
-                    </label>
                     <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" class="form-input">
                 </div>
-                <button type="submit">sing-in</button>
+                <p>Ya tienes cuenta? <a href="Iniciarsesion.html">Inicia sesión</a></p>
+                <button type="submit" class="button-verde">Registrarse</button>
             </form>
         </div>
-    </section>
+    </main>
     <script src="scripts/config.js"></script>
 
 <script src="scripts/registrarUsuario.js"></script>

@@ -1,9 +1,14 @@
-
-const token = localStorage.getItem(`token`);
 function clearForms() {
-    document.querySelectorAll(`input`).forEach(() => {
-        this.value = ``
+    document.querySelectorAll('input').forEach(input => {
+        input.value = ''; // Limpia el valor del input
     });
+    document.querySelector("#pasos").value = '';
+    const targetImageDiv = document.querySelector('#targetImageDiv');
+    
+    if (targetImageDiv) {
+        targetImageDiv.style.backgroundImage = "url('./Images/Add_image_placeholder.png')"; // Establece la imagen de fondo 
+    }
+    document.querySelector("#ingredients-list").innerHTML = "";
 }
 // Capturamos el envío del formulario
 document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(event) {
@@ -19,7 +24,6 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
     };
 
     console.log(formData);
-
     // Hacemos una solicitud POST con fetch al backend
     fetch(`${API_URL}/agregar-receta`, {
         method: `POST`,
@@ -38,12 +42,80 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
             window.location.href = `../Iniciarsesion.html`; // Redirigimos al login
         } else if (data.message === `Token inválido.`) {
             console.error(`Token inválido, acción denegada.`);
-            window.location.href = `../Iniciarsesion.html`;
+            window.location.href = `./Iniciarsesion.html`;
+            return;
+        } else if (data.message == `No tiene permitido crear receta`){
+            console.error(data.message)
+            alert(`No se pudo crear la receta`)
+            return;
         } else {
-            console.log(`Receta agregada con éxito:`, data);
-            alert(`Receta agregada con éxito`);
-            clearForms()
+            let canUpload = true;
+            let msj = "";
+            console.log(data.message)
+            if (data.message == "Error"){
+                canUpload = false;
+                msj = "Hubo un error al agregar la receta";
+            }
+            if (data.message.includes("ER_DUP_ENTRY")){
+                canUpload = false
+                msj ="El nombre de la receta ya existe"
+            }
+            if (data.message.includes("Ha alcanzado el límite de recetas permitidas")){
+                canUpload = false
+                msj = data.message
+            }
+            //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
+            if (canUpload) {
+                selectedIngredientsObject.forEach(ingredient => {
+                    ingredient.recetaId = data.recetaId;
+                    console.log(ingredient)
+                    fetch(`${API_URL}/ingredientes-receta`, {
+                        method: `POST`,
+                        headers: {
+                            'Content-Type': `application/json`, // Indicamos que estamos enviando JSON
+                            'Authorization': `Bearer ${token}` // Incluimos el token en los headers
+                        },
+                        //por cada elemento del arreglo de ingredientes, se envia al backend
+                        body: JSON.stringify(ingredient)
+                    }).then(response => response.json())
+                    .then(data => {
+                        console.log(`Ingrediente agregado:`, data);
+            
+                    })
+                    .catch(error => console.error(`Error al agregar el ingrediente:`, error));
+                });
+                // Subir la imagen aquí
+                const recetaId = data.recetaId; // Obtener el ID de la receta
+                const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos
+                const imageFormData = new FormData();
+                const imageFile = document.querySelector('#fileInput').files[0];
+                if (!imageFile) {
+                    alert('Por favor selecciona una imagen.');
+                    return;
+                }
+                console.log('Archivo seleccionado:', imageFile); // Asegurarnos de tener un input de tipo file
+                imageFormData.append('image', imageFile);
+                imageFormData.append('recetaNombre', recetaNombre); // Pasar el nombre de la receta
+                imageFormData.append('recetaId', recetaId); // Pasar el ID de la receta
+                return fetch(`${API_URL}/upload`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}` // Incluimos el token en los headers
+                    },
+                    body: imageFormData
+                });
+                
+            } else {
+                alert(msj);
+                return msj;
+            }
+
         }
     })
-    .catch(error => console.error(`Error al agregar la receta:`, error));
+    .then(response => response.json())
+    .then(data => {
+        console.log(`Imagen subida:`, data);
+    })
+    .catch(error => console.error(`Error al agregar la receta o subir la imagen:`, error));
 });
+

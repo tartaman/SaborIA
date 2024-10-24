@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaborIA | ingredientes</title>
+    <title>SaborIA | Recetas</title>
     <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/receta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav class="navbar">
@@ -15,10 +17,10 @@
                     <a href="index.html">Inicio</a>
                 </li>
                 <li>
-                    <a href="ingredientes.html" class="selected">Mis Ingredientes</a>
+                    <a href="ingredientes.html">Mis Ingredientes</a>
                 </li>
                 <li>
-                    <a href="Receta.html">Mis Recetas</a>
+                    <a href="Receta.html" class="selected">Mis Recetas</a>
                 </li>
                 <li>
                     <a href="deseos.html">Deseos</a>
@@ -26,13 +28,11 @@
             </ul>
         </div>
     </nav>
-
-
-
+    <button onclick="window.location.href='./AgregarReceta.html'">agregar receta</button>
+    <div id="container-recetas"></div>
 <script src="scripts/config.js"></script>
-    
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
-
+<script src="scripts/getRecetas.js"></script>
 </body>
 </html>

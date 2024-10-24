@@ -1,82 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-:root {
-    --background-color: #A7CCA8;
-    --kinda-white: #FFFCEF;
-    --text-color: #00695C;
-    --kinda-black:#1c1c1c;
-    --font-size: 1.5rem;
-    --moradito:#C5B3FF;
-}
 
 .main-container {
-    display: flex;
     padding: 2rem;
-    justify-content: space-between;
     font-family: "Ubuntu", sans-serif;
 }
 #dificultadForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 40%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    gap: 1rem 5rem;
+    padding: 0 4rem;
 }
 #dificultades {
     width: 100%;
-    height: 2.5rem;
     border-radius: .5rem;
     border: none;
-    background-color: var(--moradito);
+    background-color: var(--kinda-white);
     font-size: var(--font-size);
+    padding: 1rem;
 }
 #pasos {
     height: 30vh;
 }
 
 .add-image-container {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
-    justify-content: center;
-    align-items: center;
+    align-items:end;
     gap: 2rem;
+    grid-column: 2;
+    grid-row: 1/5;
+    
 }
 .add-image-div {
-    width: 50%;
-    height: 50%;
+    width: 50rem;
+    height: 50rem;
     background-image: url('../Images/Add_image_placeholder.png');
     background-position: center;
     background-size: inherit;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 1rem;
 }
+
 .form-label {
     font-family: 'Ubuntu', Arial;
-    font-weight: 500;
-    font-size: var(--font-size);
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text-color);
 }
+
 .form-input {
     border: none;
     border-radius: 2rem;
-    height: 2rem;
     width: 100%;
     font-size: var(--font-size);
     padding: 1rem;
     background-color: var(--kinda-white);
+    box-shadow: 0px 7px 9px -3px rgba(0,0,0,0.46);
 }
 
 .subir-button {
-    width: 50%;
-    padding: 1rem;
+    width: 35%;
+    padding: 0.5rem;
     background-color: var(--moradito);
     border-radius: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--kinda-black);
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
 }
+
 .submit-button {
     width: 100%;
     padding: 2rem;
@@ -84,24 +83,107 @@
     border-radius: 2rem;
     font-size: var(--font-size);
     background-color: var(--moradito);
+    font-weight: bold;
 }
-@media (max-width:800px) {
+.ingredients-container {
+    overflow-y: auto;
+    height: 45vh;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: var(--kinda-white);
+}
+.ingredients-input {
+    width:100%;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+#ingredients{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+/* ingredientes cajitas */
+.ingredient-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e7e7e7;
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 16rem;
+}
+
+.ingredient-image {
+    width: 70%;
+    aspect-ratio: 1;
+}
+
+.ingredient-title {
+    font-weight: bold;
+}
+
+.ingredient-count {
+    width: 50px;
+}
+.ingredient-unidad {
+    color:red;
+}
+
+.containers{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 1.5rem;
+}
+
+@media (max-width:1024px) {
     :root {
         --font-size:1.5rem;
     }
+
+    .main-container{
+        padding: 1rem;
+    }
+
     #dificultadForm{
-        width: 100%;
-    }
-    .main-container {
-        margin: 0;
+        grid-template-columns: 1fr;
         padding: 0;
-        flex-direction: column;
     }
+
     .add-image-container {
+        grid-column: auto;
+        grid-row: auto;
+        margin-bottom: 2rem;
+        padding: 0;
+    }
+
+    .add-image-div {
+        width: 34rem;
+        height: 34rem;
+    }
+
+    .flex-left{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .containers{
         width: 100%;
     }
-    .add-image-div {
-        width: 100vw;
-        height: 25vh;
+}
+
+@media (min-width:760px) and (max-width:1024px){
+    .add-image-container{
+        flex-direction: row;
+        align-items: start;
+    }
+    .containers{
+        justify-content: start;
     }
 }

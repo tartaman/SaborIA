@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaborIA | agregar receta</title>
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/recetas.css">
 </head>
@@ -19,7 +20,7 @@
                     <a href="ingredientes.html">Mis Ingredientes</a>
                 </li>
                 <li>
-                    <a href="AgregarReceta.html" class="selected">Mis Recetas</a>
+                    <a href="Receta.html" class="selected">Mis Recetas</a>
                 </li>
                 <li>
                     <a href="deseos.html">Deseos</a>
@@ -27,32 +28,71 @@
             </ul>
         </div>
     </nav>
-    <div class="main-container">
+    <main class="main-container">
         <form action="" id="dificultadForm" method="post">
-                <label for="Nombre" class="form-label">Nombre de la receta:</label> <br>
-                <input type="text" name="Nombre" id="nombre" class="form-input"><br>
-                <label for="Tiempo" class="form-label">Tiempo Preparacion:</label> <br>
-                <input type="number" name="Tiempo" id="tiempo" class="form-input"><br>
-                <label for="dificultad" class="form-label">Dificultad</label><br>
-                <select id="dificultades" name="dificultad">
-                </select><br>
-                <label for="pasos" class="form-label">Pasos:</label> <br>
-                <textarea type="text" name="pasos" id="pasos" class="form-input" cols="40" rows="5" ></textarea><br>
-                <label for="porciones" class="form-label">Porciones:</label> <br>
-                <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input"> <br>
-                <button type="submit" class="submit-button">ya</button>
+                <div class="div-campo">
+                    <label for="nombre" class="form-label">Nombre de la receta:</label> 
+                    <input type="text" name="Nombre" id="nombre" class="form-input input" placeholder="Agrega un nombre para tu receta">
+                </div>
+
+                <div class="div-campo">
+                    <label for="Descripcion" class="form-label">Descripcion:</label>
+                    <textarea name="Descripcion" id="descripcion" class="form-input input" placeholder="Descripción" rows="4"></textarea>
+                </div>
+                
+                <div class="div-campo">
+                    <label for="pasos" class="form-label">Pasos:</label> <br>
+                    <textarea type="text" name="pasos" id="pasos" class="form-input" cols="40" rows="5" ></textarea>
+                </div>
+                <div class="div-campo">
+                    <label for="ingrediente" class="form-label">Ingredientes:</label>
+                    <div class="ingredients-container">
+                        <input type="text" name="product" class="ingredients-input" placeholder="Ingresa el nombre del ingrediente aqui..." id="ingredient-input" list="ingredients-list">
+                        <datalist id="ingredients-list">
+                        </datalist>
+                        <div id="ingredients">
+    
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="add-image-container">
+                    <div class="flex-left">
+                        <div class="add-image-div" id="targetImageDiv"></div>
+                        <div class="subir-button" id="uploadDiv">Subir Imagen</div>
+                    </div>
+                    <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
+                    <div class="containers">
+                        <div class="div-campo">
+                            <label for="dificultad" class="form-label">Dificultad</label>
+                            <select id="dificultades" name="dificultad">
+
+                            </select>
+                        </div>
+                        <div class="div-campo">
+                            <label for="porciones" class="form-label">Porciones:</label>
+                            <input type="number" min="1" max="20" name="porciones" id="porciones" class="form-input input">
+                        </div>
+                        <div class="div-campo">
+                            <label for="Tiempo" class="form-label">Tiempo Preparacion:</label>
+                            <input type="number" name="Tiempo" id="tiempo" class="form-input input">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button">Subir receta</button>
         </form>
-        <div class="add-image-container">
-            <div class="add-image-div"></div>
-            <div class="subir-button">Subir Imagen</div>
-        </div>
-    </div>
+
+    </main>
 
 
 <script src="scripts/config.js"></script>
 <script src="scripts/addoptions.js"></script>
+<script src="scripts/getIngredients.js"></script>
 <script src="scripts/enviarReceta.js"></script>
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
+<script src="scripts/subirImagenLocal.js"></script>
+<script src="scripts/PreventSQLiRecipe.js"></script>
 </body>
 </html>

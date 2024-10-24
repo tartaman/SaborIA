@@ -1,4 +1,3 @@
-
 const token = localStorage.getItem(`token`);
 
 if (token) {
@@ -16,9 +15,9 @@ if (token) {
             console.log(`Token válido, el usuario puede acceder.`);
             // Aquí permitimos al usuario continuar navegando
         } else {
-            console.log(`Token inválido, redirigiendo al login...`);
+            alert("Su sesión ha expirado, por favor, inicia sesión de nuevo")
             localStorage.removeItem(`token`); // Eliminamos el token
-            window.location.href = `../Iniciarsesion.html`; // Redirigimos al login
+            window.location.href = `./Iniciarsesion.html`; // Redirigimos al login
         }
     })
     .catch(error => {
