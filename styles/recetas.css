@@ -36,7 +36,7 @@
 }
 .add-image-div {
     width: 50rem;
-    height: 50rem;
+    height: 35rem;
     background-image: url('../Images/Add_image_placeholder.png');
     background-position: center;
     background-size: inherit;
@@ -165,7 +165,7 @@
 
     .add-image-div {
         width: 34rem;
-        height: 34rem;
+        height: 24rem;
     }
 
     .flex-left{
