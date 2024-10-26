@@ -14,6 +14,8 @@ function clearForms() {
 document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(event) {
     event.preventDefault(); // Evitamos el comportamiento por defecto del formulario
 
+    
+
     // Obtenemos los datos del formulario
     const formData = {
         nombre: document.querySelector(`#nombre`).value,

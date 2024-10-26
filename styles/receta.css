@@ -45,18 +45,13 @@
 
 
 .receta img {
-    width: 33rem;
-    height: 24rem;
+    width: 100%;
+    aspect-ratio: 1.42;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
 
-@media(min-width: 1024px){
-    .receta img{
-        width: 50rem;
-        height: 35rem;
-    }
-}
+
 
 .dificultad-receta-container {
     display: flex;
