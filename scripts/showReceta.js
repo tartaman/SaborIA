@@ -13,4 +13,5 @@ fetch(`${API_URL}/receta`, {
 then(response => response.json()).
 then(data => {
     console.log(data)
+    dispatchEvent.appe
 });
