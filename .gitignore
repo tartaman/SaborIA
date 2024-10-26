@@ -40,6 +40,7 @@
 /*.msi
 /*.wixpdb
 /*.qlog
+/scripts/config.js
 # For GitHub Codespaces
 /pythonenv*
 
