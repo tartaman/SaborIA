@@ -111,3 +111,11 @@ p, label, input, button{
     border: 0.1rem solid black;
     box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.40);
 }
+
+.invisible{
+    visibility: hidden;
+}
+
+.not-displayed{
+    display: none;
+}

@@ -1,3 +1,5 @@
+let loadingScreen;
+
 function clearForms() {
     document.querySelectorAll('input').forEach(input => {
         input.value = ''; // Limpia el valor del input
@@ -13,9 +15,8 @@ function clearForms() {
 // Capturamos el envío del formulario
 document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(event) {
     event.preventDefault(); // Evitamos el comportamiento por defecto del formulario
-
-    
-
+    toggleLoadingScreen();
+    changeMotive();
     // Obtenemos los datos del formulario
     const formData = {
         nombre: document.querySelector(`#nombre`).value,
@@ -24,6 +25,12 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
         pasos: document.querySelector(`#pasos`).value,
         porciones: document.querySelector(`#porciones`).value,
     };
+
+    const imageFile = document.querySelector('#fileInput').files[0];
+    if (!imageFile) {
+        changeMotive("error", "Por favor, seleccione una imagen");
+        return;
+    }
 
     console.log(formData);
     // Hacemos una solicitud POST con fetch al backend
@@ -49,22 +56,30 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
         } else if (data.message == `No tiene permitido crear receta`){
             console.error(data.message)
             alert(`No se pudo crear la receta`)
+            changeMotive("error", "Hubo un error al agregar la receta");
             return;
         } else {
             let canUpload = true;
             let msj = "";
-            console.log(data.message)
-            if (data.message == "Error"){
-                canUpload = false;
-                msj = "Hubo un error al agregar la receta";
-            }
-            if (data.message.includes("ER_DUP_ENTRY")){
+            console.log(data.message);
+       
+            if(data.message.includes("40")){
                 canUpload = false
-                msj ="El nombre de la receta ya existe"
-            }
-            if (data.message.includes("Ha alcanzado el límite de recetas permitidas")){
-                canUpload = false
-                msj = data.message
+                if (data.message == "Error"){
+                    msj = "Hubo un error al agregar la receta";
+                }
+                if (data.message.includes("ER_DUP_ENTRY")){
+                    msj ="El nombre de la receta ya existe"
+                }
+                if (data.message.includes("Ha alcanzado el límite de recetas permitidas")){
+                    msj = data.message
+                }
+
+                if(data.message.includes("Todos los campos son obligatorios")){
+                    msj = "Todos los campos son obligatorios";
+                }
+                
+                changeMotive("error", msj);
             }
             //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
             if (canUpload) {
@@ -91,10 +106,7 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                 const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos
                 const imageFormData = new FormData();
                 const imageFile = document.querySelector('#fileInput').files[0];
-                if (!imageFile) {
-                    alert('Por favor selecciona una imagen.');
-                    return;
-                }
+
                 console.log('Archivo seleccionado:', imageFile); // Asegurarnos de tener un input de tipo file
                 imageFormData.append('image', imageFile);
                 imageFormData.append('recetaNombre', recetaNombre); // Pasar el nombre de la receta
@@ -108,7 +120,6 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
                 });
                 
             } else {
-                alert(msj);
                 return msj;
             }
 
@@ -116,8 +127,20 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
     })
     .then(response => response.json())
     .then(data => {
-        console.log(`Imagen subida:`, data);
+        changeMotive("success", "Receta agregada con éxito");
     })
     .catch(error => console.error(`Error al agregar la receta o subir la imagen:`, error));
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadingScreen = createLogin();
+    document.body.appendChild(loadingScreen);
+    loadingScreen.classList.add('invisible')
+
+    let button = loadingScreen.querySelector('button');
+    button.addEventListener('click', function(){
+        toggleLoadingScreen(loadingScreen);
+    });
 });
 
