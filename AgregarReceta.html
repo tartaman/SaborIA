@@ -34,11 +34,6 @@
                     <label for="nombre" class="form-label">Nombre de la receta:</label> 
                     <input type="text" name="Nombre" id="nombre" class="form-input input" placeholder="Agrega un nombre para tu receta">
                 </div>
-
-                <div class="div-campo">
-                    <label for="Descripcion" class="form-label">Descripcion:</label>
-                    <textarea name="Descripcion" id="descripcion" class="form-input input" placeholder="Descripción" rows="4"></textarea>
-                </div>
                 
                 <div class="div-campo">
                     <label for="pasos" class="form-label">Pasos:</label> <br>
@@ -75,17 +70,19 @@
                         </div>
                         <div class="div-campo">
                             <label for="Tiempo" class="form-label">Tiempo Preparacion:</label>
-                            <input type="number" name="Tiempo" id="tiempo" class="form-input input">
+                            <input type="number" name="Tiempo" id="tiempo" class="form-input input" placeholder="Minutos">
                         </div>
                     </div>
                 </div>
 
                 <button type="submit" class="submit-button">Subir receta</button>
         </form>
+        
 
+        
     </main>
 
-
+<script src="scripts/loadingScreen.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/addoptions.js"></script>
 <script src="scripts/getIngredients.js"></script>
