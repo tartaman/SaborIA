@@ -51,7 +51,7 @@ body {
 @media (max-width:1020px) {
     .options ul {
         justify-content: start;
-        gap: 1rem;
+        gap: 2rem;
     }
 }
 
@@ -67,5 +67,6 @@ body {
         flex-direction: row;
         padding: 0;
         justify-content: space-between;
+        
     }
 }

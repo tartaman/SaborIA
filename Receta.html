@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaborIA | Recetas</title>
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/receta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,8 +29,16 @@
             </ul>
         </div>
     </nav>
-    <button onclick="window.location.href='./AgregarReceta.html'">agregar receta</button>
-    <div id="container-recetas"></div>
+    <main>
+        <div class="barra-busqueda">
+            <input class="form-input" type="text" name="" id="" placeholder="Buscar recetas">
+            <button onclick="window.location.href='./AgregarReceta.html'" class="button-verde">agregar receta</button>
+        </div>
+        <div id="container-recetas">
+        
+        </div>
+    </main>
+    
 <script src="scripts/config.js"></script>
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>

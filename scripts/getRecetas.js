@@ -11,24 +11,24 @@ fetch(`${API_URL}/Recetas`, {
 
     data.forEach(receta => {
         //div que contiene la imagen, titulo, etc
-        mainDiv = document.createElement("div");
+        let mainDiv = document.createElement("div");
         mainDiv.classList.add("receta");
         //imagen de la receta
-        imagen = document.createElement("img");
+        let imagen = document.createElement("img");
         imagen.src = `${API_URL}/uploads/${receta.codigo_imagen}`;
         imagen.alt = receta.titulo;
         //titulo de la receta
-        titulo = document.createElement("h1");
+        let titulo = document.createElement("h1");
         titulo.textContent = receta.titulo;
 
         //contenedor de la duracion y dificultad
-        dificultadReceta = document.createElement("div");
+        let dificultadReceta = document.createElement("div");
         dificultadReceta.classList.add("dificultad-receta-container");
         //duracion de la receta
-        duracion = document.createElement("p");
+        let duracion = document.createElement("p");
         duracion.innerHTML = `<i class="fa-solid fa-clock"></i> ${receta.tiempo_preparacion} min`;
         //dificultad de la receta
-        dificultad = document.createElement("p");
+        let dificultad = document.createElement("p");
         dificultad.innerHTML = `<i class="fa-solid fa-gauge"></i> ${receta.nombre}`;
 
         //meter dificultad y duracion en el contenedor
