@@ -97,3 +97,61 @@ p, label, input, button{
     align-items: flex-end;
     width: 100%;
 }
+
+.flex-space-between{
+    display: flex;
+
+}
+
+.form-input {
+    font-size: 1.5rem;
+    background-color: var(--grisaceo);
+    border-radius: 4rem;
+    padding: 0.8rem 1.5rem;
+    border: 0.1rem solid black;
+    box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.40);
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+.not-displayed{
+    display: none;
+}
+
+.pantalla-carga{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.407);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.centro-pantalla{
+    background-color: var(--kinda-white);
+    display: flex;
+    padding: 2rem;
+    border-radius: 4rem;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+@media(min-width: 1024px){
+    .centro-pantalla{
+        width: 40%;
+    }
+}
+
+.centro-pantalla img{
+    width: 40%;
+    aspect-ratio: 1;
+    
+}
