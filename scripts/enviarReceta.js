@@ -15,8 +15,8 @@ function clearForms() {
 // Capturamos el envío del formulario
 document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(event) {
     event.preventDefault(); // Evitamos el comportamiento por defecto del formulario
-    toggleLoadingScreen();
     changeMotive();
+    toggleLoadingScreen();
     // Obtenemos los datos del formulario
     const formData = {
         nombre: document.querySelector(`#nombre`).value,
@@ -134,7 +134,7 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadingScreen = createLogin();
+    loadingScreen = createLoading();
     document.body.appendChild(loadingScreen);
     loadingScreen.classList.add('invisible')
 

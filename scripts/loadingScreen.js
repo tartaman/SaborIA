@@ -1,4 +1,4 @@
-function createLogin(){
+function createLoading(){
     let loadingScreen = document.createElement('div');
     loadingScreen.innerHTML = `
         <div class="centro-pantalla">
