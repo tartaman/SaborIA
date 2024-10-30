@@ -1,1 +1,1 @@
-const API_URL = "http://44.200.230.201";
+const API_URL = "https://api.saboria.me";
