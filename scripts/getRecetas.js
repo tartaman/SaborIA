@@ -16,6 +16,7 @@ fetch(`${API_URL}/Recetas`, {
         //imagen de la receta
         let imagen = document.createElement("img");
         imagen.src = `${API_URL}/uploads/${receta.codigo_imagen}`;
+        imagen.crossOrigin = "anonymous";
         imagen.alt = receta.titulo;
         //titulo de la receta
         let titulo = document.createElement("h1");
