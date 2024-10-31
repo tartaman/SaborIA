@@ -112,7 +112,7 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Queso manchego", 1, 
 SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingrediente INNER JOIN medida ON ingrediente.id_medida = medida.id_medida;
 
 
-INSERT INTO usuario(nombre, apellido_paterno, apellido_materno, correo, pass) VALUES("Admin", "", "", "admin@@@", "a");
+INSERT INTO usuario(nombre, apellido_paterno, apellido_materno, correo, pass) VALUES("Admin", "", "", "admin@@@", "$2a$10$.QFvAuaHwC0gNx2Zpm1nUu1sM3nAO8QnalxrJTROLDuVuIgNVA2AK");
 
 
 INSERT INTO dificultad(nombre) VALUES("Principiante"),( "Facil"), ("Intermedio"), ("Dificil"), ("Experto");
