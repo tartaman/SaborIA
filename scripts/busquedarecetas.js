@@ -1,4 +1,4 @@
-document.querySelector('#busqueda-receta').addEventListener('change', () => {
+document.querySelector('#busqueda-receta').addEventListener('input', () => {
     const busqueda = document.querySelector('#busqueda-receta').value;
     const recetas = document.querySelectorAll('.receta');
     recetas.forEach(receta => {
