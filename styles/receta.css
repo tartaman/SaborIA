@@ -33,15 +33,26 @@
     justify-content: space-around;
 }
 
-@media(min-width: 1024px){
+@media(min-width: 720px){
     #container-recetas{
         padding: 4rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .receta{
+        padding: 2rem;
+    }
+}
+
+@media(min-width: 1024px){
+    #container-recetas{
         grid-template-columns: repeat(3, 1fr);
     }
     .receta{
         padding: 2rem;
     }
 }
+
 
 
 .receta img {
