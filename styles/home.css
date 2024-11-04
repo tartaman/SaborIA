@@ -45,7 +45,19 @@
     max-width: 160rem;
 }
 
-.form-input{
-    width: 100%;
-    
+.barra-busqueda .button-verde{
+    background-color: #C5B3FF;
 }
+
+.barra-busqueda .button-verde:hover{
+    background-color: #ad9de2;
+}
+
+.barra-busqueda .button-verde:active{
+    background-color: #ccc0f1;
+}
+
+.form-input{
+    width: 100%;   
+}
+
