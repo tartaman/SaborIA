@@ -1,0 +1,51 @@
+.body{
+    display: flex;
+}
+
+.presentation{
+    background-color: #FFE599;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-recipes{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-recipes h2{
+    color: #004E00;
+}
+
+.grid-recetas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem 4.5rem;
+}
+
+.receta-container{
+    background-color: var(--kinda-white);
+    border-radius: 2rem;
+    padding: 2.5rem;
+}
+
+.receta-container img{
+    width: 100%;
+    aspect-ratio: 1.42;
+    border-radius: 2rem;
+}
+
+.barra-busqueda{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 2.6rem auto;
+    gap: 2rem;
+    max-width: 160rem;
+}
+
+.form-input{
+    width: 100%;
+    
+}

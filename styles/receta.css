@@ -53,16 +53,12 @@
     }
 }
 
-
-
 .receta img {
     width: 100%;
     aspect-ratio: 1.42;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
-
-
 
 .dificultad-receta-container {
     display: flex;

@@ -54,8 +54,47 @@ async function getRecomended(){
     return finalResponse;
 }
 
+function createWidget(receta){
+    const recetaDiv = document.createElement('div');
+    recetaDiv.classList.add("receta-container");
+    recetaDiv.innerHTML = `
+        <img src="${API_URL}/uploads/${receta.codigo_imagen}" alt="${receta.titulo}">
+        <h2>${receta.titulo}</h2>
+        <button class="button-verde">Ver más</button>
+    `
+    return recetaDiv;
+}
 
+async function showRecomended() {
+    let response = await getRecomended();
+    const recommended = document.getElementById('recommended');
+    const suggested = document.getElementById('suggested');
+    const rest = document.getElementById('rest');
+
+    response.recommended.forEach(receta => {
+        let recetaDiv = createWidget(receta);
+        recommended.appendChild(recetaDiv);
+    });
+
+    response.suggested.forEach(receta => {
+        let recetaDiv = createWidget(receta);
+        suggested.appendChild(recetaDiv);
+    });
+    
+    let numerosAleatorios = [];
+    while (numerosAleatorios.length != 6){
+        let numeroAleatorio = Math.floor(Math.random() * response.rest.length);
+        if(!numerosAleatorios.includes(numeroAleatorio)){
+            numerosAleatorios.push(numeroAleatorio);
+        }
+    }
+    
+    numerosAleatorios.forEach(numero => {
+        let recetaDiv = createWidget(response.rest[numero]);
+        rest.appendChild(recetaDiv);
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    getRecomended();
+    showRecomended();
 });
