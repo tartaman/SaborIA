@@ -85,3 +85,18 @@
     width: 100%;   
 }
 
+.no-recipes{
+    background-color: var(--grisaceo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 3rem;
+    border-radius: 2rem;
+    grid-column: 1/4;
+}
+
+.no-recipes img{
+    width: 10rem;
+    height: 10rem;
+}

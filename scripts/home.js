@@ -65,24 +65,45 @@ function createWidget(receta){
     return recetaDiv;
 }
 
+function createEmpty(){
+    const recetaDiv = document.createElement('div');
+    recetaDiv.classList.add("no-recipes");
+    recetaDiv.innerHTML = `
+        <img src="${API_URL}/uploads/No-recipes.png">
+        <h3>No hay recetas para mostrar</h3>
+    `;
+    recetaDiv.classList.add("empty-recipe");
+    return recetaDiv;
+}
+
 async function showRecomended() {
     let response = await getRecomended();
     const recommended = document.getElementById('recommended');
     const suggested = document.getElementById('suggested');
     const rest = document.getElementById('rest');
 
+    if(response.recommended.length == 0){
+        recommended.appendChild(createEmpty());
+    }
     response.recommended.forEach(receta => {
         let recetaDiv = createWidget(receta);
         recommended.appendChild(recetaDiv);
     });
 
+    if(response.suggested.length == 0){
+        suggested.appendChild(createEmpty());
+    }
     response.suggested.forEach(receta => {
         let recetaDiv = createWidget(receta);
         suggested.appendChild(recetaDiv);
     });
     
+    if(response.rest.length == 0){
+        rest.appendChild(createEmpty());
+    }
     let numerosAleatorios = [];
-    while (numerosAleatorios.length != 6){
+    let quantity = Math.min(response.rest.length, 6);
+    while (numerosAleatorios.length != quantity){
         let numeroAleatorio = Math.floor(Math.random() * response.rest.length);
         if(!numerosAleatorios.includes(numeroAleatorio)){
             numerosAleatorios.push(numeroAleatorio);
@@ -93,6 +114,7 @@ async function showRecomended() {
         let recetaDiv = createWidget(response.rest[numero]);
         rest.appendChild(recetaDiv);
     });
+    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
