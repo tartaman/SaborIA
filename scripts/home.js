@@ -70,7 +70,7 @@ function createEmpty(){
     recetaDiv.classList.add("no-recipes");
     recetaDiv.innerHTML = `
         <img src="${API_URL}/uploads/No-recipes.png">
-        <h3>No hay recetas para mostrar</h3>
+        <h3>No hay recetas para mostrar. Intenta agregando ingredientes y recetas.</h3>
     `;
     recetaDiv.classList.add("empty-recipe");
     return recetaDiv;
