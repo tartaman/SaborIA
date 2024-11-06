@@ -6,6 +6,7 @@
     <title>SaborIA</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/home.css">
     
 </head>
 <body>
@@ -22,14 +23,41 @@
                 <li>
                     <a href="Receta.html">Mis Recetas</a>
                 </li>
-                <li>
-                    <a href="deseos.html">Deseos</a>
-                </li>
             </ul>
         </div>
     </nav>
+
+    <section class="presentation">
+        <h1>Descubre recetas con los ingredientes que ya tienes</h1>
+        <p>Ahorrar y evitar que los productos se echen a perder nunca había sido tan fácil.</p>
+    </section>
+
+    <div class="barra-busqueda">
+        <input class="form-input" type="text">
+        <button class="button-verde">Buscar</button>
+    </div>
+    
+    <main>
+        <section class="section-recipes">
+            <h2>Recetas para ti</h2>
+            <p>Recetas hechas con lo que ya tienes</p>
+            <div id="recommended" class="grid-recetas"></div>
+        </section>
+        <section class="section-recipes">
+            <h2>Recetas sugeridas</h2>
+            <p>¡Solo hacen falta algunos ingredientes para hacerlas!</p>
+            <div id="suggested" class="grid-recetas"></div>
+        </section>
+        <section class="section-recipes">
+            <h2>Recetas variadas</h2>
+            <p>Otra recetas que tal vez te gusten</p>
+            <div id="rest" class="grid-recetas"></div>
+        </section>
+    </main>
+
 <script src="scripts/config.js"></script>
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
+<script src="scripts/home.js"></script>
 </body>
 </html>

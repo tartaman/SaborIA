@@ -261,3 +261,8 @@ UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Calabacita.png' WHE
 UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Paquetes_de_pasta_spagetti.png' WHERE id_ingrediente = 49;
 UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Barra_de_mantequilla.png' WHERE id_ingrediente = 50;
 UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_manchego.png' WHERE id_ingrediente = 51;
+
+UPDATE receta set codigo_imagen = "1_Huevos_revueltos.png" WHERE id_receta = 1;
+UPDATE receta set codigo_imagen = "1_Chilaquiles_rojos.png" WHERE id_receta = 2;
+UPDATE receta set codigo_imagen = "1_Omelette_de_jamón_y_queso.png" WHERE id_receta = 3;
+UPDATE receta set codigo_imagen = "1_Spaguetti_Rojo.png" WHERE id_receta = 8;
