@@ -115,7 +115,7 @@ SELECT ingrediente.Id_ingrediente, ingrediente.nombre, medida.simbolo FROM ingre
 INSERT INTO usuario(nombre, apellido_paterno, apellido_materno, correo, pass) VALUES("Admin", "", "", "admin@@@", "$2a$10$.QFvAuaHwC0gNx2Zpm1nUu1sM3nAO8QnalxrJTROLDuVuIgNVA2AK");
 
 
-INSERT INTO dificultad(nombre) VALUES("Principiante"),( "Facil"), ("Intermedio"), ("Dificil"), ("Experto");
+INSERT INTO dificultad(nombre) VALUES("Principiante"),( "Fácil"), ("Intermedio"), ("Difícil"), ("Experto");
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
 ("Huevos revueltos", 1, 5, "", 1, "Rompe los huevos en un bol \nBate bien los huevos con un tenedor o batidor hasta que la mezcla esté homogénea.\nAgrega sal y pimienta al gusto. \nColoca una sartén antiadherente en la estufa a fuego medio. \nAñade el aceite a la sartén y cubra el fondo.
@@ -154,7 +154,7 @@ de la sartén.", 1, TRUE);
 INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 3, 2), (6, 3, 1.5), (26, 3, 50), (4, 3, 15); 
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Enfrijoladas de polo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
+("Enfrijoladas de pollo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
  Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
  Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
  Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
@@ -162,11 +162,6 @@ INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dific
  INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(3, 4, 300), (36, 4, 240), (15, 4, 2), (9, 4, 0.25), (37, 4, 3),
  (39, 4, 150), (38, 4, 20), (30, 4, 4), (6, 4, 2), (7, 4, 1), (10, 4, 2);
 
-INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Enfrijoladas de pollo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
- Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
- Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
- Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
  
  INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
 ("Empanadas de carne", 1, 80, "", 3, "Vamos a iniciar nuestra receta cortando la cebolla, el pimentón, el tomate y el ajo en cuadritos.\n
@@ -266,3 +261,12 @@ UPDATE receta set codigo_imagen = "1_Huevos_revueltos.png" WHERE id_receta = 1;
 UPDATE receta set codigo_imagen = "1_Chilaquiles_rojos.png" WHERE id_receta = 2;
 UPDATE receta set codigo_imagen = "1_Omelette_de_jamón_y_queso.png" WHERE id_receta = 3;
 UPDATE receta set codigo_imagen = "1_Spaguetti_Rojo.png" WHERE id_receta = 8;
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (1,1,400);
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (3,1,400);
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (6,1,700);
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (25,1,90);
+

@@ -1,0 +1,15 @@
+.ingredients-container {
+    display: flex;
+    background-color: beige;
+    width: 80vw;
+
+}
+.main-container-ingredientes {
+    display: flex;
+}
+
+.ingrediente {
+    width: 15vw;
+    display: flex;
+    justify-content: space-evenly;
+}
