@@ -6,6 +6,7 @@
     <title>SaborIA | ingredientes</title>
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/ingredientes.css">
 </head>
 <body>
     <nav class="navbar">
@@ -25,13 +26,14 @@
         </div>
     </nav>
     <div class="main-container-ingredientes">    
-        <div id="contenedor-ingredientes" class="ingredients-container">
-            <button type="button" id="button-guardarcambios">guardar cambios</button>
+        <div id="contenedor-ingredientes" class="ingredients-container" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
         <div id="contenedor-agregar">
             
         </div>
     </div>
+    <button type="button" id="button-guardarcambios">guardar cambios</button>
+
 
 
 <script src="scripts/config.js"></script>

@@ -1,15 +1,13 @@
 .ingredients-container {
-    display: flex;
+    width: 50vw;
     background-color: beige;
-    width: 80vw;
-
 }
 .main-container-ingredientes {
     display: flex;
+    flex-direction: row;
 }
 
 .ingrediente {
-    width: 15vw;
     display: flex;
     justify-content: space-evenly;
 }
