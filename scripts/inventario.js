@@ -34,7 +34,7 @@ async function getIngredientsinventory () {
             div.innerHTML = `
                     <input type="number" min="0" id="${element.id_ingrediente}" new="false"  name=ingrediente-${element.id_ingrediente}" value="${element.cantidad}" placeholder="${element.simbolo}">
                     <label for="${element.id_ingrediente}">${element.nombre}</label>
-                    <button>X</button>
+                    <button id="elim-button">X</button>
             `;
             document.querySelector('#contenedor-ingredientes').appendChild(div);
             gottenIds.add(element.id_ingrediente);
@@ -67,7 +67,18 @@ async function getIngredientsinventory () {
     } catch (error) {
         console.log(error);
     }
-
+    //botón para eliminar cosas
+    document.querySelectorAll('#elim-button').forEach((element) => {
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            myelem = event.target.parentElement
+            console.log(myelem)
+            document.querySelector('#contenedor-agregar').appendChild(myelem);
+            myelem.querySelector('input').setAttribute('new',true);
+            myelem.querySelector('input').value = "";
+            myelem.replaceWith(myelem.cloneNode(true));
+        })
+    })
 }
 getIngredientsinventory()
 function addIngredients() {
