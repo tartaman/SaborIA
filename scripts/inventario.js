@@ -30,9 +30,10 @@ async function getIngredientsinventory () {
         ingredientesData.forEach(element => {
             div = document.createElement('div');
             div.classList.add('ingrediente');
+            div.setAttribute('new', false);
             div.innerHTML = `
-                    <input type="number" id="ingrediente-${element.id_ingrediente}" name="ingrediente-${element.id_ingrediente}" value="${element.cantidad}" placeholder="${element.simbolo}">
-                    <label for="ingrediente-${element.id_ingrediente}">${element.nombre}</label>
+                    <input type="number" min="0" id="${element.id_ingrediente}" new="false"  name=ingrediente-${element.id_ingrediente}" value="${element.cantidad}" placeholder="${element.simbolo}">
+                    <label for="${element.id_ingrediente}">${element.nombre}</label>
                     <button>X</button>
             `;
             document.querySelector('#contenedor-ingredientes').appendChild(div);
@@ -56,7 +57,7 @@ async function getIngredientsinventory () {
                 div.setAttribute('id',`${element.id_ingrediente}`)
                 div.addEventListener('dragstart', (event) => drag(event));
                 div.innerHTML = `
-                        <input type="number" id="ingrediente-${element.id_ingrediente}" name="ingrediente-${element.id_ingrediente}" placeholder="${element.simbolo}">
+                        <input type="number" id="${element.id_ingrediente}" name="ingrediente-${element.id_ingrediente}" new="true" placeholder="${element.simbolo}">
                         <label for="ingrediente-${element.id_ingrediente}">${element.nombre}</label>
                         <button>X</button>
                 `;
@@ -68,5 +69,36 @@ async function getIngredientsinventory () {
     }
 
 }
-
 getIngredientsinventory()
+function addIngredients() {
+    boton = document.querySelector('#button-guardarcambios');
+    boton.addEventListener('click', async () => {
+        const ingredientes = document.querySelectorAll('#contenedor-ingredientes .ingrediente input');
+        const ingredientesData = [];
+        ingredientes.forEach(element => {
+            const id = element.id;
+            const cantidad = element.value;
+            const nuevo = element.getAttribute("new") == "true" ? true : false;
+            ingredientesData.push({id, cantidad, nuevo});
+        });
+        try {
+            ingredientesData.forEach(e => {
+                console.log(e.id, e.cantidad, e.nuevo)
+            })
+            const response = await fetch(`${API_URL}/editIngredients`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ingredientesData)
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    })
+}
+
+addIngredients();

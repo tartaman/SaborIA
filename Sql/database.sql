@@ -91,7 +91,7 @@ INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Arroz", 1, True), ("H
 ("Cebolla", 7, True), ("Cilantro", 1, True), ("Limón", 7, True), ("Naranja agria", 7, True);
 
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES("Zanahoria", 7, True), ("Elote", 7, True), ("Dientes de ajo", 7, True), ("Aguacate", 7, True), ("Agua", 3, True),
-("Chile habanero", 7, True), ("Chile Morron", 7, True), ("Harina", 1, True), ("Lechuga", 7, True), ("Chayote", 7, True), ("Mayonesa", 3, True),
+("Chile habanero", 7, True), ("Chile Morrón", 7, True), ("Harina", 1, True), ("Lechuga", 7, True), ("Chayote", 7, True), ("Mayonesa", 3, True),
 ("Guisantes", 1, True), ("Atún", 1, True), ("Jamón", 1, True), ("Levadura", 1, True);
 
 INSERT INTO ingrediente(nombre, id_medida, estado) VALUES ("Chile guajillo", 7, True);
