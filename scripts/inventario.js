@@ -67,6 +67,7 @@ async function getIngredientsinventory () {
     } catch (error) {
         console.log(error);
     }
+
     //botón para eliminar cosas
     document.querySelectorAll('#elim-button').forEach((element) => {
         element.addEventListener('click', (event) => {
@@ -77,6 +78,8 @@ async function getIngredientsinventory () {
             myelem.querySelector('input').setAttribute('new',true);
             myelem.querySelector('input').value = "";
             myelem.replaceWith(myelem.cloneNode(true));
+            
+
         })
     })
 }
