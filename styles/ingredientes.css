@@ -10,4 +10,11 @@
 .ingrediente {
     display: flex;
     justify-content: space-evenly;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.elim-button {
+    border-radius: 1rem;
+    padding: 1rem;
 }

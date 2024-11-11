@@ -32,9 +32,9 @@ async function getIngredientsinventory () {
             div.classList.add('ingrediente');
             div.setAttribute('new', false);
             div.innerHTML = `
-                    <input type="number" min="0" id="${element.id_ingrediente}" new="false"  name=ingrediente-${element.id_ingrediente}" value="${element.cantidad}" placeholder="${element.simbolo}">
+                    <input type="number" min="0" id="${element.id_ingrediente}" new="false" class="form-input input" name=ingrediente-${element.id_ingrediente}" value="${element.cantidad}" placeholder="${element.simbolo}">
                     <label for="${element.id_ingrediente}">${element.nombre}</label>
-                    <button id="elim-button">X</button>
+                    <button class="elim-button" id="elim-button">X</button>
             `;
             document.querySelector('#contenedor-ingredientes').appendChild(div);
             gottenIds.add(element.id_ingrediente);
@@ -57,9 +57,9 @@ async function getIngredientsinventory () {
                 div.setAttribute('id',`${element.id_ingrediente}`)
                 div.addEventListener('dragstart', (event) => drag(event));
                 div.innerHTML = `
-                        <input type="number" id="${element.id_ingrediente}" name="ingrediente-${element.id_ingrediente}" new="true" placeholder="${element.simbolo}">
+                        <input type="number" id="${element.id_ingrediente}" class="form-input input" name="ingrediente-${element.id_ingrediente}" new="true" placeholder="${element.simbolo}">
                         <label for="ingrediente-${element.id_ingrediente}">${element.nombre}</label>
-                        <button>X</button>
+                        <button class="elim-button">X</button>
                 `;
                 document.querySelector('#contenedor-agregar').appendChild(div);
             }
@@ -78,7 +78,14 @@ async function getIngredientsinventory () {
             myelem.querySelector('input').setAttribute('new',true);
             myelem.querySelector('input').value = "";
             myelem.replaceWith(myelem.cloneNode(true));
-            
+            fetch(`${API_URL}/borrarInventario`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: myelem.querySelector('input').id})
+            })
 
         })
     })
