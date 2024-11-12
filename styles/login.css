@@ -1,14 +1,22 @@
 .main {
-    
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.main-sign{
+    height: auto;
+}
+
 @media(min-width: 1024px){
     .main{
         height: 100vh;
     }
+    
 }
+
+
 
 .form-container {
     background-color: var(--kinda-white) ;
