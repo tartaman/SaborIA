@@ -1,0 +1,21 @@
+.ingredients-container {
+    width: 50vw;
+    background-color: beige;
+    border-radius: 2rem;
+}
+.main-container-ingredientes {
+    display: flex;
+    flex-direction: row;
+}
+
+.ingrediente {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.elim-button {
+    border-radius: 1rem;
+    padding: 1rem;
+}

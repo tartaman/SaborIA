@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaborIA | ingredientes</title>
     <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/ingredientes.css">
 </head>
 <body>
     <nav class="navbar">
@@ -20,19 +22,27 @@
                 <li>
                     <a href="Receta.html">Mis Recetas</a>
                 </li>
-                <li>
-                    <a href="deseos.html">Deseos</a>
-                </li>
             </ul>
         </div>
     </nav>
+    <div class="main-container-ingredientes">    
+        <div id="contenedor-ingredientes" class="ingredients-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <input type="text" class="form-input input" placeholder="Buscar" id="ingredient-search">
+            <div id="contenedor-agregar">
+                
+            </div>
+        </div>
+    </div>
+    <button type="button" id="button-guardarcambios" class="button-verde">guardar cambios</button>
 
 
 
 <script src="scripts/config.js"></script>
-    
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
-
+<script src="scripts/inventario.js"></script>
+<script src="scripts/search-input.js"></script>
 </body>
 </html>
