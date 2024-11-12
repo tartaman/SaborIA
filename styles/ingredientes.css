@@ -1,6 +1,7 @@
 .ingredients-container {
     width: 50vw;
     background-color: beige;
+    border-radius: 2rem;
 }
 .main-container-ingredientes {
     display: flex;

@@ -28,8 +28,11 @@
     <div class="main-container-ingredientes">    
         <div id="contenedor-ingredientes" class="ingredients-container" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
-        <div id="contenedor-agregar">
-            
+        <div style="display: flex; flex-direction: column;">
+            <input type="text" class="form-input input" placeholder="Buscar" id="ingredient-search">
+            <div id="contenedor-agregar">
+                
+            </div>
         </div>
     </div>
     <button type="button" id="button-guardarcambios" class="button-verde">guardar cambios</button>
@@ -40,5 +43,6 @@
 <script src="scripts/keep_alive_script.js"></script>
 <script src="./scripts/redirigir-si-nologin.js"></script>
 <script src="scripts/inventario.js"></script>
+<script src="scripts/search-input.js"></script>
 </body>
 </html>
