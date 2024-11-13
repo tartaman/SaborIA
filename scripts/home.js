@@ -58,7 +58,7 @@ function createWidget(receta){
     const recetaDiv = document.createElement('div');
     recetaDiv.classList.add("receta-container");
     recetaDiv.innerHTML = `
-        <img src="${API_URL}/uploads/${receta.codigo_imagen}" alt="${receta.titulo}">
+        <img crossorigin="anonimous" src="${API_URL}/uploads/${receta.codigo_imagen}" alt="${receta.titulo}">
         <h2>${receta.titulo}</h2>
         <button class="button-verde">Ver más</button>
     `
@@ -69,7 +69,7 @@ function createEmpty(){
     const recetaDiv = document.createElement('div');
     recetaDiv.classList.add("no-recipes");
     recetaDiv.innerHTML = `
-        <img src="${API_URL}/uploads/No-recipes.png">
+        <img crossorigin="anonimous" src="${API_URL}/uploads/No-recipes.png">
         <h3>No hay recetas para mostrar. Intenta agregando ingredientes y recetas.</h3>
     `;
     recetaDiv.classList.add("empty-recipe");
