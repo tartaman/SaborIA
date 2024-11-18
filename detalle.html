@@ -6,6 +6,7 @@
     <title>SaborIA</title>
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/detalle.css">
 </head>
 <body>
     <nav class="navbar">
@@ -26,7 +27,7 @@
     </nav>
     <main class="main-container">
        <div class="title">
-            <h1 class="title-text">Producto</h1>
+            <h1 class="title-text" id="title">Producto</h1>
        </div>
        
        <div class="first-section">
@@ -37,12 +38,12 @@
 
             <div class="product-elements">
                 <div id="product-image">
-                    <img src="./Images/Ingredients/Tomate.png" alt="">
+                    <img src="./Images/Ingredients/Tomate.png" alt="" id="image">
                 </div>
                 
                 <div id="product-info">
                     <ul>
-                        <li></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -50,14 +51,15 @@
         </div>
 
         <div class="preparation-steps">
-            <h3 class="preparation-title">
+            <h3 class="preparation-title" id="pasos">
                 Pasos de preparación
             </h3>
-            <ul>
-                <li></li>
-            </ul>
+            
         </div>
-
+        <div>
+            <button>borrar receta</button> 
+            <button>guardar cambios</button>
+        </div>
     </main>
 
 

@@ -13,5 +13,12 @@ fetch(`${API_URL}/receta`, {
 then(response => response.json()).
 then(data => {
     console.log(data)
-    dispatchEvent.appe
+    document.querySelector('#title').innerHTML = data[0].titulo
+    document.querySelector('#pasos').innerHTML = data[0].pasos.replace(/\n/g, '<br>')
+    document.querySelector('#image').src = `${API_URL}/uploads/${data[0].codigo_imagen}`
+    document.querySelector('#product-info').innerHTML = `
+                                                        <h3>Por: ${data[0].creador}</h3>
+                                                        <h3>Dificultad: ${data[0].dificultad}</h3>
+                                                        <h3>Tiempo: ${data[0].tiempo_preparacion} minutos</h3>
+                                                        `
 });
