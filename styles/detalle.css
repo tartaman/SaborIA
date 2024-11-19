@@ -1,3 +1,7 @@
+.preparation-steps li{
+    font-size: 1.8rem;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -74,9 +78,9 @@
 
 .preparation-steps {
     background-color: white;
-    height: 50rem;
     width: 87.5rem;
     padding: 2rem;
+    padding-bottom: 4rem;
     border-radius: 5rem;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 5rem;;
@@ -84,6 +88,11 @@
 
 .preparation-steps h3 {
     text-align: center;
+}
+
+.preparation-title, #ingredients h3{
+    color: var(--text-color);
+    font-size: 3.5rem;
 }
 
 .ingredient-div{
@@ -110,4 +119,29 @@
     width: 6rem;
     height: 6rem;
     border-radius: 2rem;
+}
+
+@media(max-width: 900px){
+    .main-container{
+        padding: 1rem;
+    }
+
+    .first-section{
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    #product-image img, #product-info, #ingredients, .preparation-steps, .product-elements{
+        width: 100%;
+    }
+
+    #product-image img{
+        height: auto;
+        aspect-ratio: 1.42;
+    }
+
+    .preparation-steps{
+        margin: 4rem ;
+
+    }
 }

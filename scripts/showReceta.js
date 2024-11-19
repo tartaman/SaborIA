@@ -16,15 +16,14 @@ then(data => {
     document.querySelector('#title').innerHTML = data[0].titulo
 
     const pasos = data[0].pasos.split('\n')  
-    const ol = document.createElement("ul");
+    const ol = document.createElement("ol");
     pasos.forEach(paso => {
         const li = document.createElement("li");
         li.innerHTML = paso;
         ol.appendChild(li);
     });
-    
 
-    });
+    document.querySelector('.preparation-steps').appendChild(ol);
 
     document.querySelector('#image').src = `${API_URL}/uploads/${data[0].codigo_imagen}`
     const details = document.querySelectorAll('.recipe-detail');
