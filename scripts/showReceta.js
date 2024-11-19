@@ -12,7 +12,6 @@ fetch(`${API_URL}/receta`, {
 }).
 then(response => response.json()).
 then(data => {
-    console.log(data)
     document.querySelector('#title').innerHTML = data[0].titulo
 
     const pasos = data[0].pasos.split('\n')  
@@ -40,7 +39,6 @@ then(data => {
     const divIngredientes = document.querySelector('#ingredients div')
     
     data[0].ingredientes.forEach(ingrediente => {
-        console.log(ingrediente)
         const ingredienteDiv = document.createElement('div');
         ingredienteDiv.classList.add('ingredient-div');
         ingredienteDiv.innerHTML = `
