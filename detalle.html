@@ -6,6 +6,7 @@
     <title>SaborIA</title>
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/detalle.css">
 </head>
 <body>
     <nav class="navbar">
@@ -13,18 +14,61 @@
         <div class="options">
             <ul>
                 <li>
-                    <a href="index.html">Inicio</a>
+                    <a href="index.html" class="selected">Inicio</a>
                 </li>
                 <li>
                     <a href="ingredientes.html">Mis Ingredientes</a>
                 </li>
                 <li>
-                    <a href="Receta.html" class="selected">Mis Recetas</a>
+                    <a href="Receta.html">Mis Recetas</a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+    <main class="main-container">
+       <div class="title">
+            <h1 class="title-text" id="title">Producto</h1>
+       </div>
+       
+       <div class="first-section">
+            <div id="ingredients">
+                <h3>Ingredientes</h3>
+                <div class="display-ingredients"></div>
+            </div>
+
+            <div class="product-elements">
+                <div id="product-image">
+                    <img src="./Images/Ingredients/Tomate.png" alt="" id="image">
+                </div>
+                
+                <div id="product-info">
+                    <div class="recipe-detail">
+                        <img src="Images/lethimcook.png" alt="Tiempo de preparación">
+                    </div>
+                    <div class="recipe-detail">
+                        <img src="Images/level.png" alt="Dificultad">
+                    </div>
+                    <div class="recipe-detail">
+                        <img src="Images/user.png" alt="Creador">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="preparation-steps">
+            <h3 class="preparation-title" id="pasos">
+                Pasos de preparación
+            </h3>
+            
+        </div>
+        <div>
+            <button>borrar receta</button> 
+            <button>guardar cambios</button>
+        </div>
+    </main>
+
+
 <script src="scripts/config.js"></script>
 <script src="scripts/keep_alive_script.js"></script>
 <script src="scripts/redirigir-si-nologin.js"></script>

@@ -60,8 +60,15 @@ function createWidget(receta){
     recetaDiv.innerHTML = `
         <img crossorigin="anonimous" src="${API_URL}/uploads/${receta.codigo_imagen}" alt="${receta.titulo}">
         <h2>${receta.titulo}</h2>
-        <button class="button-verde">Ver más</button>
-    `
+    `;
+    const button = document.createElement('button');
+    button.classList.add("button-verde");
+    button.textContent = "Ver más";
+    recetaDiv.appendChild(button);
+
+    button.addEventListener('click', () => {
+        window.location.href = `detalle.html?IDR=${receta.id_receta}`;
+    })
     return recetaDiv;
 }
 

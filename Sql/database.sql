@@ -128,36 +128,39 @@ INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 1,
 
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Chilaquiles rojos", 1, 40, "", 2, "Hierve los tomates ya pelados en agua durante 3 minutos. \nAñade los chiles guajillo limpios y sin semilla y déjalos hervir por 2 minutos más. \nRetira del fuego los ingredientes y déjalos reposar hasta que se enfríen.
-\nLicúa los jitomates y los chiles con el agua donde hirvieron, junto con los ajos y 1/4 de cebolla hasta obtener una salsa tersa.
-\nCuélala y resérvela. Pon sobre el fuego una cacerola con 15 ml de aceite; cuando esté caliente, añade la salsa, las ramas de epazote y la sal.
-\nDistribuye en platos los totopos y báñalos con la salsa caliente.
-\n Agrégales crema, queso y cebolla.", 4, TRUE);
+("Chilaquiles rojos", 1, 40, "", 2, "Hierve los tomates ya pelados en agua durante 3 minutos. 
+Añade los chiles guajillo limpios y sin semilla y déjalos hervir por 2 minutos más. 
+Retira del fuego los ingredientes y déjalos reposar hasta que se enfríen.
+Licúa los jitomates y los chiles con el agua donde hirvieron, junto con los ajos y 1/4 de cebolla hasta obtener una salsa tersa.
+Cuélala y resérvela. Pon sobre el fuego una cacerola con 15 ml de aceite; cuando esté caliente, añade la salsa, las ramas de epazote y la sal.
+Distribuye en platos los totopos y báñalos con la salsa caliente.
+Agrégales crema, queso y cebolla.", 4, TRUE);
 
 INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(8, 2, 3), (28, 2, 6), (15, 2, 2), (9, 2, 0.75),
 (4, 2, 165), (29, 2, 2), (6, 2, 5), (31, 2, 80), (32,2, 200), (33,2, 250);
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Omelette de jamón y queso", 1, 15, "", 2, "A la hora de preparar tu tortilla francesa u omelette con jamón y queso, lo primero que 
-deberás hacer será cascar y batir los huevos en un cuenco o plato hondo. Agregar la sal durante este proceso, puede ser al gusto. 
+("Omelette de jamón y queso", 1, 15, "", 2, "A la hora de preparar tu tortilla francesa u omelette con jamón y queso, lo primero que deberás hacer será cascar y batir los huevos en un cuenco o plato hondo. 
+Agregar la sal durante este proceso, puede ser al gusto. 
 Cabe destacar que hay quienes le agregan un poco de leche (dos cucharadas) para conseguir un omelet más esponjoso.
-\nA continuación, deberás cortar el jamón en pequeñas tiras o trozos que deberás incorporar al cuenco con los huevos batidos. 
+A continuación, deberás cortar el jamón en pequeñas tiras o trozos que deberás incorporar al cuenco con los huevos batidos. 
 En el caso del queso, rayarlo o trozearlo y agregarlo también a la mezcla.
-\n Con la ayuda de un tenedor, remueve bien la mezcla para que el jamón y el queso queden bien integrados en el huevo y 
-mientras pon al fuego una sartén antiadherente con un poco de aceite de oliva. Será fundamental que la sartén no se pegue para
-no destrozar la tortilla francesa mientras la preparas.
-\nUna vez que la sartén con aceite esté bien caliente, deberás verter la mezcla de tu omelette de jamón y queso y menéala un poco con una cuchara de madera -nunca con utensilios metálicos para evitar rayar la sartén- para que el huevo cuaje.
-\nUna vez que veamos que empieza a cocinarse por una cara, tendremos que dar la vuelta a la tortilla francesa de jamón y queso para que
-quede dorada por ambos lados. Asimismo, puedes optar entre doblar tu omelette por la mitad, en tres partes o mantener la forma redondeada 
-de la sartén.", 1, TRUE);
+Con la ayuda de un tenedor, remueve bien la mezcla para que el jamón y el queso queden bien integrados en el huevo y mientras pon al fuego una sartén antiadherente con un poco de aceite de oliva. Será fundamental que la sartén no se pegue para no destrozar la tortilla francesa mientras la preparas.
+Una vez que la sartén con aceite esté bien caliente, deberás verter la mezcla de tu omelette de jamón y queso y menéala un poco con una cuchara de madera -nunca con utensilios metálicos para evitar rayar la sartén- para que el huevo cuaje.
+Una vez que veamos que empieza a cocinarse por una cara, tendremos que dar la vuelta a la tortilla francesa de jamón y queso para que quede dorada por ambos lados. Asimismo, puedes optar entre doblar tu omelette por la mitad, en tres partes o mantener la forma redondeada de la sartén.", 1, TRUE);
 
 INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(2, 3, 2), (6, 3, 1.5), (26, 3, 50), (4, 3, 15); 
 
 INSERT INTO receta (titulo, creador, tiempo_preparacion, codigo_imagen, id_dificultad, pasos, porciones, global_recipie) VALUES
-("Enfrijoladas de pollo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo\nPicar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
- Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos)\nLicuar la salsa hasta integrar los ingredientes. 
- Conservar caliente.\nPasar las tortillas por aceite hirviendo.\nTomar las tortillas y rellenarlas de pollo.\n
- Acomodar las 4 tortillas rellenas sobre un plato.\nServir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
+("Enfrijoladas de pollo", 1, 45, "", 2, "Hervir el pollo y luego deshebrarlo
+Picar la cebolla y freirla junto con el ajo ya pelado, hasta que la cebolla se vea transparente.
+Agregar los frijoles y el chile morita. (cocinar a fuego medio por 10 minutos).
+Licuar la salsa hasta integrar los ingredientes. 
+Conservar caliente.
+Pasar las tortillas por aceite hirviendo.
+Tomar las tortillas y rellenarlas de pollo.
+Acomodar las 4 tortillas rellenas sobre un plato.
+Servir la salsa de frijoles, agregar crema, pollo y queso al gusto.", 1, TRUE);
  
  INSERT INTO ingrediente_receta(id_ingrediente, id_receta, cantidad) VALUES(3, 4, 300), (36, 4, 240), (15, 4, 2), (9, 4, 0.25), (37, 4, 3),
  (39, 4, 150), (38, 4, 20), (30, 4, 4), (6, 4, 2), (7, 4, 1), (10, 4, 2);
@@ -260,13 +263,18 @@ UPDATE ingrediente SET codigo_imagen = './Images/Ingredients/Queso_manchego.png'
 UPDATE receta set codigo_imagen = "1_Huevos_revueltos.png" WHERE id_receta = 1;
 UPDATE receta set codigo_imagen = "1_Chilaquiles_rojos.png" WHERE id_receta = 2;
 UPDATE receta set codigo_imagen = "1_Omelette_de_jamón_y_queso.png" WHERE id_receta = 3;
-UPDATE receta set codigo_imagen = "1_Spaguetti_Rojo.png" WHERE id_receta = 8;
+UPDATE receta set codigo_imagen = "1_Spaguetti_Rojo.png" WHERE id_receta = 7;
 
-INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (1,1,400);
+UPDATE receta set codigo_imagen = "1_Enfrijoladas_de_pollo.png" WHERE id_receta = 4;
+UPDATE receta set codigo_imagen = "1_Empanadas_de_carne.png" WHERE id_receta = 5;
+UPDATE receta set codigo_imagen = "1_Caldo_de_pollo_con_verduras.png" WHERE id_receta = 6;
 
-INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (3,1,400);
 
-INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (6,1,700);
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (1,2,400);
 
-INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (25,1,90);
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (3,2,400);
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (6,2,700);
+
+INSERT INTO inventario(id_ingrediente, id_usuario, cantidad) VALUES (25,2,90);
 
