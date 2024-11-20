@@ -6,5 +6,5 @@ document.querySelectorAll(".input").forEach((input) => {
     });
 });
 document.querySelector("#pasos").addEventListener("input", function() {
-    this.value = this.value.replace(/[^a-zA-Z0-9 .@]/g, '');
+    this.value = this.value.replace(/[^a-zA-Z0-9 .@\n]/g, '');
 })
