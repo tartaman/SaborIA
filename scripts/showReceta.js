@@ -1,5 +1,25 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => console.log("sisis"));
+
+function deleteReceta(id_receta){
+    fetch(`${API_URL}/delete-receta`, {
+        method: `POST`,
+        headers: {
+            'Content-Type': `application/json`,
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({'id_receta':id_receta})
+    }).
+    then(response => response.json()).
+    then(data => {
+        if(data.status == 200){
+
+            window.location.href = 'index.html'
+        }
+    });
+}
+
 // Obtener los valores de los parámetros
 const id_receta = urlParams.get('IDR');
 fetch(`${API_URL}/receta`, {
@@ -53,7 +73,9 @@ then(data => {
         `;
         divIngredientes.appendChild(ingredienteDiv);
     });
-    
-
 });
 
+
+document.body.appendChild(confirmationObject.pantallaConf)
+
+document.querySelector('.button-eliminar').addEventListener('click', () => confirmationObject.show())
