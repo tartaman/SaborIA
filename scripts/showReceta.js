@@ -20,12 +20,13 @@ function deleteReceta(id_receta){
     }).
     then(response => response.json()).
     then(data => {
-        console.log(data);
         if(data.message.includes("200")){
             loadingScreen.changeMotive("success", "Receta eliminada con éxito.");
+            loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
         }
         else{
             loadingScreen.changeMotive("error", "Hubo un error al borrar la receta, por favor, intente de nuevo.");
+            loadingScreen.loadingScreen.querySelector('button').removeEventListener('click', () => document.location.href = `Receta.html`)
         }
     });
     
@@ -100,9 +101,9 @@ then(data => {
         `;
         divIngredientes.appendChild(ingredienteDiv);
     });
-    console.log(data[0])
+    
     insertButtons(data[0].global_recipie)
-    loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
+    
     document.querySelector('.button-eliminar').addEventListener('click', () => confirmationObject.show())
 });
 
