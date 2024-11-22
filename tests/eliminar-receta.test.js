@@ -1,3 +1,9 @@
+global.fetch = jest.fn(() =>
+    Promise.resolve({
+        json: () => Promise.resolve({ message: "200" })
+    })
+);
+
 const deleteReceta = require('../scripts/showReceta');
 
 test('deleteReceta envía la solicitud correcta', () => {

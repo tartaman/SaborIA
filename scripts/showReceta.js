@@ -1,3 +1,7 @@
+const API_URL = require('./config')
+const ConfirmationWindow = require('./confirmationScreen');
+const LoadingScreen = require('./loadingScreen');
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));

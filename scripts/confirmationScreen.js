@@ -1,4 +1,4 @@
-class ConfirmationWindow{
+ class ConfirmationWindow{
     constructor(title, text = null, event= null){
         this.pantallaConf = this.createConfirmation(title, text, event);
     }
@@ -38,3 +38,5 @@ class ConfirmationWindow{
     }
 
 }
+
+module.exports = ConfirmationWindow; 
