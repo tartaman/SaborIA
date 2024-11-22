@@ -44,8 +44,6 @@ function insertButtons(globalRecipe){
         `;
         document.querySelector('main').appendChild(buttons)
     }
-    
-
 }
 
 // Obtener los valores de los parámetros
@@ -113,3 +111,5 @@ document.body.appendChild(confirmationObject.pantallaConf)
 
 document.body.appendChild(loadingScreen.loadingScreen)
 
+//Exports para testing con jest
+module.exports = deleteReceta;
