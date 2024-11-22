@@ -137,9 +137,5 @@ document.addEventListener('DOMContentLoaded', function() {
     loadingScreen =  new LoadingScreen();
     document.body.appendChild(loadingScreen.loadingScreen);
 
-    let button = loadingScreen.loadingScreen.querySelector('button');
-    button.addEventListener('click', function(){
-        loadingScreen.toggleLoadingScreen();
-    });
 });
 

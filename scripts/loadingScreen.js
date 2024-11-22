@@ -14,15 +14,21 @@ class LoadingScreen{
             </div>
         `;
         loadingScreen.classList.add('pantalla-carga');
-        loadingScreen.classList.add('invisible')
+        loadingScreen.classList.add('invisible');
+
+        const button = loadingScreen.querySelector('button');
+        button.addEventListener('click', ()=>{
+            this.toggleLoadingScreen();
+        });
+
         return loadingScreen;
     }
 
     changeMotive(state = "loading", text = "Por favor espere"){
         console.log(this.loadingScreen);
-        let image = this.loadingScreen.querySelector('.centro-pantalla img');
-        let texth2 = this.loadingScreen.querySelector('.centro-pantalla h2');
-        let button = this.loadingScreen.querySelector('.centro-pantalla button');
+        let image = this.loadingScreen.querySelector('img');
+        let texth2 = this.loadingScreen.querySelector('h2');
+        let button = this.loadingScreen.querySelector('button');
     
         texth2.textContent = text;
         

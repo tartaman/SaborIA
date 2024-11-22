@@ -1,8 +1,15 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => console.log("sisis"));
+const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));
+const loadingScreen = new LoadingScreen();
+
+
 
 function deleteReceta(id_receta){
+    confirmationObject.hide()
+    loadingScreen.changeMotive("loading", "Eliminando receta...");
+    loadingScreen.toggleLoadingScreen();
+    
     fetch(`${API_URL}/delete-receta`, {
         method: `POST`,
         headers: {
@@ -13,11 +20,31 @@ function deleteReceta(id_receta){
     }).
     then(response => response.json()).
     then(data => {
-        if(data.status == 200){
-
-            window.location.href = 'index.html'
+        console.log(data);
+        if(data.message.includes("200")){
+            loadingScreen.changeMotive("success", "Receta eliminada con éxito.");
+        }
+        else{
+            loadingScreen.changeMotive("error", "Hubo un error al borrar la receta, por favor, intente de nuevo.");
         }
     });
+    
+    
+}
+
+function insertButtons(globalRecipe){
+    console.log(globalRecipe)
+    if(globalRecipe == 0){
+        const buttons = document.createElement("div");
+        buttons.classList.add('button-div');
+        buttons.innerHTML = `
+            <button class="button-verde">Editar receta</button>
+            <button class="button-verde button-eliminar">Borrar receta</button>
+        `;
+        document.querySelector('main').appendChild(buttons)
+    }
+    
+
 }
 
 // Obtener los valores de los parámetros
@@ -73,9 +100,15 @@ then(data => {
         `;
         divIngredientes.appendChild(ingredienteDiv);
     });
+    console.log(data[0])
+    insertButtons(data[0].global_recipie)
+    loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
+    document.querySelector('.button-eliminar').addEventListener('click', () => confirmationObject.show())
 });
 
 
 document.body.appendChild(confirmationObject.pantallaConf)
 
-document.querySelector('.button-eliminar').addEventListener('click', () => confirmationObject.show())
+
+document.body.appendChild(loadingScreen.loadingScreen)
+
