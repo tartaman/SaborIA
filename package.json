@@ -4,7 +4,7 @@
   "description": "A website where you can upload and see cooking recipes, along with a ingredient counter which will decrease when you make said recipe so that you can keep track of how many ingredients you have left and so that you can get suggested some recipes for th quantity of ingredients that you have",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +22,8 @@
     "ngrok": "^5.0.0-beta.2",
     "nodemailer": "^6.9.15",
     "saboria": "file:"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

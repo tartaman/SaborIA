@@ -1,5 +1,48 @@
-const queryString = window.location.search
-const urlParams = new URLSearchParams(queryString)
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));
+const loadingScreen = new LoadingScreen();
+
+function deleteReceta(id_receta){
+    confirmationObject.hide()
+    loadingScreen.changeMotive("loading", "Eliminando receta...");
+    loadingScreen.toggleLoadingScreen();
+    
+    fetch(`${API_URL}/delete-receta`, {
+        method: `POST`,
+        headers: {
+            'Content-Type': `application/json`,
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({'id_receta':id_receta})
+    }).
+    then(response => response.json()).
+    then(data => {
+        if(data.message.includes("200")){
+            loadingScreen.changeMotive("success", "Receta eliminada con éxito.");
+            loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
+        }
+        else{
+            loadingScreen.changeMotive("error", "Hubo un error al borrar la receta, por favor, intente de nuevo.");
+            loadingScreen.loadingScreen.querySelector('button').removeEventListener('click', () => document.location.href = `Receta.html`)
+        }
+    });
+    
+    
+}
+
+function insertButtons(globalRecipe){
+    console.log(globalRecipe)
+    if(globalRecipe == 0){
+        const buttons = document.createElement("div");
+        buttons.classList.add('button-div');
+        buttons.innerHTML = `
+            <button class="button-verde">Editar receta</button>
+            <button class="button-verde button-eliminar">Borrar receta</button>
+        `;
+        document.querySelector('main').appendChild(buttons)
+    }
+}
 // Obtener los valores de los parámetros
 const id_receta = urlParams.get('IDR')
 async function showandeditData() {
@@ -23,6 +66,8 @@ async function showandeditData() {
         li.classList.add('editable')
         ol.appendChild(li)
     })
+    insertButtons(data[0].global_recipie)
+    
 
     document.querySelector('.preparation-steps').appendChild(ol)
     document.querySelector(
@@ -75,7 +120,8 @@ async function showandeditData() {
             `
         }
         divIngredientes.appendChild(ingredienteDiv)
-    })
+    });
+    document.querySelector('.button-eliminar').addEventListener('click', () => confirmationObject.show())
 
     if (data[0].global_recipie == 0) {
             
@@ -207,3 +253,13 @@ async function deleteIngredient() {
         })
     })
 }
+    
+
+
+document.body.appendChild(confirmationObject.pantallaConf)
+
+
+document.body.appendChild(loadingScreen.loadingScreen)
+
+//Exports para testing con jest
+module.exports = deleteReceta;
