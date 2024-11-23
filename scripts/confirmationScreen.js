@@ -38,3 +38,5 @@ class ConfirmationWindow{
     }
 
 }
+
+module.exports = ConfirmationWindow;

@@ -57,7 +57,4 @@ class LoadingScreen{
     }
 }
 
-
-
-
-
+module.exports = LoadingScreen;

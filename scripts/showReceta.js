@@ -1,3 +1,8 @@
+const ConfirmationWindow = require("./confirmationScreen")
+const LoadingScreen = require("./loadingScreen")
+const API_URL = require("./config");
+const token = localStorage.getItem('token');
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));
@@ -163,7 +168,7 @@ async function showandeditData() {
     }
     deleteIngredient();
 }
-showandeditData();
+
 
 async function comboEdits() {
     const dificultadesResponse = await fetch(`${API_URL}/dificultades`)
@@ -254,7 +259,7 @@ async function deleteIngredient() {
     })
 }
     
-
+document.addEventListener('DOMContentLoaded', showandeditData)
 
 document.body.appendChild(confirmationObject.pantallaConf)
 
@@ -262,4 +267,7 @@ document.body.appendChild(confirmationObject.pantallaConf)
 document.body.appendChild(loadingScreen.loadingScreen)
 
 //Exports para testing con jest
-module.exports = deleteReceta;
+module.exports = {
+    deleteReceta,
+    insertButtons
+  };

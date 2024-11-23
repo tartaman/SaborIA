@@ -1,4 +1,8 @@
-const deleteReceta = require('../scripts/showReceta');
+
+const API_URL = require("../scripts/config");
+const token = localStorage.getItem('token');
+
+const { deleteReceta, insertButtons } = require('../scripts/showReceta');
 
 test('deleteReceta envía la solicitud correcta', () => {
     global.fetch = jest.fn(() =>
@@ -16,3 +20,11 @@ test('deleteReceta envía la solicitud correcta', () => {
         body: JSON.stringify({ id_receta: 123 })
     });
 });
+
+test('insertButtons no agrega botones si la receta no es del usuario, si no que es global', () => {
+    document.body.innerHTML = '<main></main>';
+    insertButtons(1);
+    expect(document.querySelector('.button-div')).toBeNull();
+});
+
+
