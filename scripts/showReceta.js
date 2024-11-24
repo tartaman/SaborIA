@@ -8,12 +8,12 @@ const urlParams = new URLSearchParams(queryString);
 const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));
 const loadingScreen = new LoadingScreen();
 
-function deleteReceta(id_receta){
+async function deleteReceta(id_receta, confirmationObject, loadingScreen){
     confirmationObject.hide()
     loadingScreen.changeMotive("loading", "Eliminando receta...");
     loadingScreen.toggleLoadingScreen();
     
-    fetch(`${API_URL}/delete-receta`, {
+    await fetch(`${API_URL}/delete-receta`, {
         method: `POST`,
         headers: {
             'Content-Type': `application/json`,
@@ -25,11 +25,11 @@ function deleteReceta(id_receta){
     then(data => {
         if(data.message.includes("200")){
             loadingScreen.changeMotive("success", "Receta eliminada con éxito.");
-            loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
+            //loadingScreen.loadingScreen.querySelector('button').addEventListener('click', () => document.location.href = `Receta.html`)
         }
         else{
             loadingScreen.changeMotive("error", "Hubo un error al borrar la receta, por favor, intente de nuevo.");
-            loadingScreen.loadingScreen.querySelector('button').removeEventListener('click', () => document.location.href = `Receta.html`)
+            //loadingScreen.loadingScreen.querySelector('button').removeEventListener('click', () => document.location.href = `Receta.html`)
         }
     });
     
