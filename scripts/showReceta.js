@@ -1,9 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta));
+const confirmationObject = new ConfirmationWindow("¿Está seguro de esta acción?", "Esta acción NO puede revertirse.", () => deleteReceta(id_receta, confirmationObject, loadingScreen));
 const loadingScreen = new LoadingScreen();
 
-function deleteReceta(id_receta){
+function deleteReceta(id_receta, confirmationObject, loadingScreen){
     confirmationObject.hide()
     loadingScreen.changeMotive("loading", "Eliminando receta...");
     loadingScreen.toggleLoadingScreen();
