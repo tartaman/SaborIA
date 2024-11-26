@@ -269,5 +269,6 @@ document.body.appendChild(loadingScreen.loadingScreen)
 //Exports para testing con jest
 module.exports = {
     deleteReceta,
-    insertButtons
+    insertButtons,
+    showandeditData
   };

@@ -38,14 +38,22 @@ describe('ConfirmationWindow', () => {
         const acceptButton = confirmationWindow.pantallaConf.querySelector('#accept');
         acceptButton.click();
 
-        expect(mockEvent).toHaveBeenCalledTimes(1); // Verifica que el evento se haya llamado
+        expect(mockEvent).toHaveBeenCalledTimes(1); 
+    });
+
+    test('Al usar la función close(), la clase invisible debe agregarse', () => {
+        confirmationWindow = new ConfirmationWindow('Título', 'Texto');
+        document.body.appendChild(confirmationWindow.pantallaConf);
+
+        confirmationWindow.hide();
+        expect(confirmationWindow.pantallaConf.classList.contains('invisible')).toBe(true);
     });
 
     test('Al apretar el botón de close, se debe agregar la clase invisible', () => {
         confirmationWindow = new ConfirmationWindow('Título', 'Texto');
         document.body.appendChild(confirmationWindow.pantallaConf);
 
-        confirmationWindow.show(); // Asegúrate de que inicialmente sea visible
+        confirmationWindow.show(); 
         const closeButton = confirmationWindow.pantallaConf.querySelector('#close');
         closeButton.click();
 
@@ -58,13 +66,5 @@ describe('ConfirmationWindow', () => {
 
         confirmationWindow.show();
         expect(confirmationWindow.pantallaConf.classList.contains('invisible')).toBe(false);
-    });
-
-    test('Al usar la función close(), la clase invisible debe agregarse', () => {
-        confirmationWindow = new ConfirmationWindow('Título', 'Texto');
-        document.body.appendChild(confirmationWindow.pantallaConf);
-
-        confirmationWindow.hide();
-        expect(confirmationWindow.pantallaConf.classList.contains('invisible')).toBe(true);
     });
 });

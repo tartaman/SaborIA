@@ -46,6 +46,24 @@ test('Al confirmar la eliminación, se debe llamar a la función hide de la pant
     expect( global.confirmationObject.hide).toHaveBeenCalled();
 })
 
+test('Al confirmar la eliminación, se debe cambiar el motivo de la pantalla de espera a "loading" y se debe mostrar usando la función toggleLoadingScreen', ()=>{
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () => Promise.resolve({ message: "200" })
+        })
+    );
+    global.confirmationObject = {
+        hide: jest.fn()
+    }
+    global.loadingScreen = {
+        changeMotive: jest.fn(),
+        toggleLoadingScreen: jest.fn()
+    }
+    deleteReceta(123, global.confirmationObject, global.loadingScreen);
+    expect( global.loadingScreen.changeMotive).toHaveBeenCalledWith("loading", "Eliminando receta..."); 
+    expect( global.loadingScreen.toggleLoadingScreen).toHaveBeenCalled();
+})
+
 test ('Al recibir un código de 200 (el fetch estuvo bien hecho), se cambia el motivo de la pantalla de espera a success', async () => {
     global.fetch = jest.fn(() =>
         Promise.resolve({
@@ -88,4 +106,9 @@ test('insertButtons no agrega botones si la receta no es del usuario, si no que 
     expect(document.querySelector('.button-div')).toBeNull();
 });
 
+test('insertButtons  agrega botones si la receta es del usuario', () => {
+    document.body.innerHTML = '<main></main>';
+    insertButtons(0);
+    expect(document.querySelector('.button-div')).not.toBeNull();
+});
 
