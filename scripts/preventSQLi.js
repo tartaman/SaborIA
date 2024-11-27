@@ -5,6 +5,3 @@ document.querySelectorAll("input").forEach((input) => {
         this.value = this.value.replace(/[^a-zA-Z0-9 .@]/g, '');
     });
 });
-document.querySelector("#pasos").addEventListener("input", function() {
-    this.value = this.value.replace(/[^a-zA-Z0-9 .@]/g, '');
-})
