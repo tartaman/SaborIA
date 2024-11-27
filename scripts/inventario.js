@@ -57,8 +57,12 @@ async function getIngredientsinventory () {
                 div.setAttribute('id',`${element.id_ingrediente}`)
                 div.addEventListener('dragstart', (event) => drag(event));
                 div.innerHTML = `
-                        <input type="number" id="${element.id_ingrediente}" class="form-input input" name="ingrediente-${element.id_ingrediente}" new="true" placeholder="${element.simbolo}">
+                        <img src="${API_URL}/uploads/${element.codigo_imagen}" alt=""
                         <label for="ingrediente-${element.id_ingrediente}">${element.nombre}</label>
+                        <div class="gramaje">
+                            <p>${element.simbolo_ingrediente}:</p>
+                            <input type="number" id="${element.id_ingrediente}" class="form-input input" name="ingrediente-${element.id_ingrediente}" new="true" placeholder="${element.simbolo}">
+                        </div>
                         <button class="elim-button">X</button>
                 `;
                 document.querySelector('#contenedor-agregar').appendChild(div);
