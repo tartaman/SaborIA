@@ -1,8 +1,9 @@
-let loadingScreen;
+let loadingScreen = null
+
 document.querySelector(`#login`).addEventListener(`submit`, function (event) {
     event.preventDefault();
-    changeMotive("loading", "Iniciando sesión");
-    toggleLoadingScreen();
+    loadingScreen.changeMotive("loading", "Iniciando sesión");
+    loadingScreen.toggleLoadingScreen();
     const formData = {
         username: document.querySelector(`#usuario`).value,
         pass: document.querySelector(`#contrasena`).value
@@ -26,26 +27,20 @@ document.querySelector(`#login`).addEventListener(`submit`, function (event) {
         } else if (status === 401) {
             // Contraseña incorrecta o usuario no encontrado
             console.log(`Error de autenticación:`, body.message);
-            changeMotive("error", body.message);
+            loadingScreen.changeMotive("error", body.message);
           
         } else {
             // Otros errores (500 por ejemplo)
-            changeMotive("error", `Error en el servidor:`, body.message);
+            loadingScreen.changeMotive("error", `Error en el servidor:`, body.message);
         }
     })
     .catch(error => {
         console.error(`Error en la solicitud:`, error);
-        changeMotive("error", "Error en la conexión o el servidor.");
+        loadingScreen.changeMotive("error", "Error en la conexión o el servidor.");
     });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadingScreen = createLoading();
-    document.body.appendChild(loadingScreen);
-    loadingScreen.classList.add('invisible')
-
-    let button = loadingScreen.querySelector('button');
-    button.addEventListener('click', function(){
-        toggleLoadingScreen(loadingScreen);
-    });
+    loadingScreen =  new LoadingScreen();
+    document.body.appendChild(loadingScreen.loadingScreen);
 });
