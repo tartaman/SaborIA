@@ -1,21 +1,97 @@
 .ingredients-container {
     width: 50vw;
+    min-height: 3.5rem;;
     background-color: beige;
     border-radius: 2rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-section {
+    min-height: 3.5rem;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
 }
 .main-container-ingredientes {
-    display: flex;
+    display: flex; 
     flex-direction: row;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
 }
 
 .ingrediente {
     display: flex;
     justify-content: space-evenly;
     margin: 2rem auto;
-    padding: 1rem;
 }
 
 .elim-button {
     border-radius: 1rem;
     padding: 1rem;
+}
+
+.main-buttons .button-verde {
+    margin: 0;
+}
+
+.main-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin:1rem;
+}
+
+.ingrediente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+    min-width: 70rem;
+    max-width: 70rem;
+}
+
+.ingrediente input {
+    border: 1px solid #000000;
+    border-radius: 5rem;
+    max-width: 20rem;
+    min-width: 15rem;
+}
+
+.ingrediente label {
+    flex: 3;
+    font-size: 1.5 rem;
+    font-weight: bold;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 7rem;
+    min-width: 7rem;
+}
+
+.ingrediente img {
+    flex: 0;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 1rem;
+}
+
+.gramaje {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gramaje p {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
