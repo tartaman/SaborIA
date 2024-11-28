@@ -1,6 +1,6 @@
 .ingredients-container {
     width: 50vw;
-    min-height: 3.5rem;;
+    min-height: 3.5rem;
     background-color: beige;
     border-radius: 2rem;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -26,12 +26,6 @@
     padding: 1rem;
 }
 
-.ingrediente {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 2rem auto;
-}
-
 .elim-button {
     border-radius: 1rem;
     padding: 1rem;
@@ -51,6 +45,7 @@
 .ingrediente {
     display: flex;
     align-items: center;
+    margin: 2rem auto;
     justify-content: space-between;
     gap: 10rem;
     min-width: 70rem;

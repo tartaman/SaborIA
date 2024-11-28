@@ -46,7 +46,7 @@
 }
 
 .form-label {
-    font-family: 'Ubuntu', Arial;
+    font-family: 'Ubuntu', Arial, sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: var(--text-color);
