@@ -57,7 +57,7 @@ async function getIngredientsinventory () {
                 div.setAttribute('id',`${element.id_ingrediente}`)
                 div.addEventListener('dragstart', (event) => drag(event));
                 div.innerHTML = `
-                        <img src="${API_URL}/uploads/${element.codigo_imagen}" alt=""
+                        <img src="${element.codigo_imagen}" alt=""
                         <label for="ingrediente-${element.id_ingrediente}">${element.nombre}</label>
                         <div class="gramaje">
                             <p>${element.simbolo}:</p>
