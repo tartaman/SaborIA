@@ -27,7 +27,7 @@ fileInput.addEventListener('change', (event) => {
         
         // Leer el archivo y mostrarlo en el div
         reader.onload = function(e) {
-            target.style.backgroundImage = `url(${e.target.result})`;
+            target.style.backgroundImage = `url(${e.target.result.toString()})`;
         };
 
         reader.readAsDataURL(file); // Leer el archivo como una URL de datos
