@@ -103,7 +103,7 @@ function addIngredients() {
         ingredientes.forEach(element => {
             const id = element.id;
             const cantidad = element.value;
-            const nuevo = element.getAttribute("new") == "true" ? true : false;
+            const nuevo = element.getAttribute("new") === "true";
             ingredientesData.push({id, cantidad, nuevo});
         });
         try {

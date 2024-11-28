@@ -59,12 +59,12 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
             loadingScreen.changeMotive("error", "Hubo un error al agregar la receta");
             return;
         }
-        let canUpload = true;
+
         let msj = "";
         console.log(data.message);
        
         if(data.message.includes("40")){
-            canUpload = false
+
             if (data.message == "Error"){
                 msj = "Hubo un error al agregar la receta";
             }
