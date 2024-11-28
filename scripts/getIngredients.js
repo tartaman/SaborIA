@@ -50,7 +50,7 @@ function createIngredientDiv(ingredient) {
         selectedIngredients.delete(ingredient.nombre);
         selectedIngredientsObject = selectedIngredientsObject.filter(item => item.nombre !== ingredient.nombre);
     });
-    // Agregar todo al div
+    // Agregar al div los elementos
     div.appendChild(img);
     div.appendChild(title);
     div.appendChild(inputNumber);

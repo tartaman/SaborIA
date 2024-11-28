@@ -58,72 +58,68 @@ document.querySelector(`#dificultadForm`).addEventListener(`submit`, function(ev
             alert(`No se pudo crear la receta`)
             loadingScreen.changeMotive("error", "Hubo un error al agregar la receta");
             return;
-        } else {
-            let canUpload = true;
-            let msj = "";
-            console.log(data.message);
-       
-            if(data.message.includes("40")){
-                canUpload = false
-                if (data.message == "Error"){
-                    msj = "Hubo un error al agregar la receta";
-                }
-                if (data.message.includes("ER_DUP_ENTRY")){
-                    msj ="El nombre de la receta ya existe"
-                }
-                if (data.message.includes("Ha alcanzado el límite de recetas permitidas")){
-                    msj = data.message
-                }
-
-                if(data.message.includes("Todos los campos son obligatorios")){
-                    msj = "Todos los campos son obligatorios";
-                }
-                
-                loadingScreen.changeMotive("error", msj);
-            }
-            //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
-            if (canUpload) {
-                selectedIngredientsObject.forEach(ingredient => {
-                    ingredient.recetaId = data.recetaId;
-                    console.log(ingredient)
-                    fetch(`${API_URL}/ingredientes-receta`, {
-                        method: `POST`,
-                        headers: {
-                            'Content-Type': `application/json`, // Indicamos que estamos enviando JSON
-                            'Authorization': `Bearer ${token}` // Incluimos el token en los headers
-                        },
-                        //por cada elemento del arreglo de ingredientes, se envia al backend
-                        body: JSON.stringify(ingredient)
-                    }).then(response => response.json())
-                    .then(data => {
-                        console.log(`Ingrediente agregado:`, data);
-            
-                    })
-                    .catch(error => console.error(`Error al agregar el ingrediente:`, error));
-                });
-                // Subir la imagen aquí
-                const recetaId = data.recetaId; // Obtener el ID de la receta
-                const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos
-                const imageFormData = new FormData();
-                const imageFile = document.querySelector('#fileInput').files[0];
-
-                console.log('Archivo seleccionado:', imageFile); // Asegurarnos de tener un input de tipo file
-                imageFormData.append('image', imageFile);
-                imageFormData.append('recetaNombre', recetaNombre); // Pasar el nombre de la receta
-                imageFormData.append('recetaId', recetaId); // Pasar el ID de la receta
-                return fetch(`${API_URL}/upload`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}` // Incluimos el token en los headers
-                    },
-                    body: imageFormData
-                });
-                
-            } else {
-                return msj;
-            }
-
         }
+        let canUpload = true;
+        let msj = "";
+        console.log(data.message);
+       
+        if(data.message.includes("40")){
+            canUpload = false
+            if (data.message == "Error"){
+                msj = "Hubo un error al agregar la receta";
+            }
+            else if (data.message.includes("ER_DUP_ENTRY")){
+                msj ="El nombre de la receta ya existe"
+            }
+            else if (data.message.includes("Ha alcanzado el límite de recetas permitidas")){
+                msj = data.message
+            }
+
+            else if(data.message.includes("Todos los campos son obligatorios")){
+                msj = "Todos los campos son obligatorios";
+            }
+                
+            loadingScreen.changeMotive("error", msj);
+            return Promise.reject(data.message);
+        }
+        //debió llegar hasta aqui bien por lo que solo checamos si si se pudo subir
+        selectedIngredientsObject.forEach(ingredient => {
+            ingredient.recetaId = data.recetaId;
+            console.log(ingredient)
+            fetch(`${API_URL}/ingredientes-receta`, {
+                method: `POST`,
+                headers: {
+                    'Content-Type': `application/json`, // Indicamos que estamos enviando JSON
+                    'Authorization': `Bearer ${token}` // Incluimos el token en los headers
+                },
+                //por cada elemento del arreglo de ingredientes, se envia al backend
+                body: JSON.stringify(ingredient)
+            }).then(response => response.json())
+            .then(data => {
+                console.log(`Ingrediente agregado:`, data);
+            
+            })
+            .catch(error => console.error(`Error al agregar el ingrediente:`, error));
+        });
+        // Subir la imagen aquí
+        const recetaId = data.recetaId; // Obtener el ID de la receta
+        const recetaNombre = formData.nombre.replace(/\s+/g, '_'); // Reemplaza espacios por guiones bajos
+        const imageFormData = new FormData();
+        const imageFile = document.querySelector('#fileInput').files[0];
+
+        console.log('Archivo seleccionado:', imageFile); // Asegurarnos de tener un input de tipo file
+        imageFormData.append('image', imageFile);
+        imageFormData.append('recetaNombre', recetaNombre); // Pasar el nombre de la receta
+        imageFormData.append('recetaId', recetaId); // Pasar el ID de la receta
+        
+        return fetch(`${API_URL}/upload`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}` // Incluimos el token en los headers
+                    },
+            body: imageFormData
+        });
+                
     })
     .then(response => response.json())
     .then(data => {

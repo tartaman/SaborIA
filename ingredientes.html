@@ -27,8 +27,9 @@
     </nav>
     <main>
         <div class="main-container-ingredientes">    
-            <div id="contenedor-ingredientes" class="ingredients-container" ondrop="drop(event)" ondragover="allowDrop(event)">
-            </div>
+            <div id="contenedor-ingredientes" class="ingredients-container" ondrop="drop(event)" ondragover="allowDrop(event)" 
+            role="listbox" tabindex="0" aria-label="Contenedor de ingredientes"> </div>
+            
             <div class="search-section">
                 <input type="text" class="form-input input" placeholder="Buscar" id="ingredient-search">
                 <div id="contenedor-agregar">       

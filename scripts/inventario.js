@@ -18,7 +18,7 @@ function drop(event) {
     }
 }
 async function getIngredientsinventory () {
-    gottenIds = new Set();
+    let gottenIds = new Set();
     try {
         const ingredientesResponse =await fetch(`${API_URL}/ingredients-single`, {
             method: 'GET',
@@ -28,7 +28,7 @@ async function getIngredientsinventory () {
         const ingredientesData = await ingredientesResponse.json()
         console.log(ingredientesData)
         ingredientesData.forEach(element => {
-            div = document.createElement('div');
+            const div = document.createElement('div');
             div.classList.add('ingrediente');
             div.setAttribute('new', false);
             div.innerHTML = `
@@ -51,7 +51,7 @@ async function getIngredientsinventory () {
         const ingredientesData = await ingredientes.json()
         ingredientesData.forEach(element => {
             if(!gottenIds.has(element.id_ingrediente)){
-                div = document.createElement('div');
+                const div = document.createElement('div');
                 div.classList.add('ingrediente');
                 div.draggable = true;
                 div.setAttribute('id',`${element.id_ingrediente}`)
@@ -76,7 +76,7 @@ async function getIngredientsinventory () {
     document.querySelectorAll('#elim-button').forEach((element) => {
         element.addEventListener('click', (event) => {
             event.preventDefault();
-            myelem = event.target.parentElement
+           let myelem = event.target.parentElement
             console.log(myelem)
             document.querySelector('#contenedor-agregar').appendChild(myelem);
             myelem.querySelector('input').setAttribute('new',true);
@@ -96,7 +96,7 @@ async function getIngredientsinventory () {
 }
 getIngredientsinventory()
 function addIngredients() {
-    boton = document.querySelector('#button-guardarcambios');
+    const boton = document.querySelector('#button-guardarcambios');
     boton.addEventListener('click', async () => {
         const ingredientes = document.querySelectorAll('#contenedor-ingredientes .ingrediente input');
         const ingredientesData = [];
